@@ -1,15 +1,4 @@
-<?php
-session_start();
-require_once "php/utility.php";
-
-if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
-	conlog("[INFO] No session detected");
-} else {
-	conlog("Logged: ".$_SESSION['logged']);
-	conlog("Email: ".$_SESSION['email']);
-	conlog("Nickname: ".$_SESSION['nickname']);
-}
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -19,7 +8,6 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
 
 		<link rel="shortcut icon" href="imgs/page_icon.png">
 		<?php include "pages/fonts.php"; ?>
-		
     	<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/books_container.css">
 		<link rel="stylesheet" href="css/page_header.css">
@@ -33,27 +21,26 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
 		<?php include "pages/nav_bar.php"; ?>
 
 		<main id=books-container>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
-			<a href=#><img src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" height="288" width="192" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
+			<a href=#><img class="book" src="https://via.placeholder.com/192x288.png?text=Book+PlaceHolder"></a>
 		</main>
 	</body>
 </html>

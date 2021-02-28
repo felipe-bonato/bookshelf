@@ -60,27 +60,3 @@ body {
     margin: 0 0 var(--margin-itens) 0;
 }
 
-#button-c button {
-    font-family: 'Proza Libre', sans-serif;
-    font-size: 1.25rem;
-    font-weight: 800;
-
-    border: solid var(--primary-dark);
-    border-radius: 15px;
-    background-color: var(--primary-light);
-    
-    height: 3rem;
-    width: 100%;
-
-    padding: var(--padding-itens) 0 var(--padding-itens) 0;
-}
-
-button:hover {
-    box-shadow: .15em .15em .25em var(--shadow);
-}
-
-button:hover span {
-    color: var(--text-light);
-    text-shadow: .15em .15em .25em var(--shadow);
-}
-

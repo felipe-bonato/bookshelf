@@ -9,13 +9,6 @@
     padding: 5rem var(--container-lr-padding);
 }
 
-#books-container img {
-    height: 100%;
-    width: 100%;
-
-    border-radius: 5%/3.3333%; /* Book spect ratio is 1.5, so this is nescessary so that the book border is rounded and not eliptical*/
-}
-
 #books-container a {
     transition: transform calc(var(--transition-time) / 3) linear;
 }
@@ -25,4 +18,11 @@
     
     border-radius: 5%/3.3333%; /* Book spect ratio is 1.5, so this is nescessary so that the book border is rounded and not eliptical*/
     box-shadow: 0px 0px 16px 5px var(--shadow);
+}
+
+.book {
+    height: 100%;
+    width: 100%;
+
+    border-radius: 5%/3.3333%; /* Book spect ratio is 1.5, so this is nescessary so that the book border is rounded and not eliptical*/
 }

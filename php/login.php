@@ -1,38 +1,37 @@
 <?php
-session_start();
+/*
+LOGIN.PHP
+ - Processes login and set cookies
+*/
 require_once "utility.php";
+require_once "BookshelfDB.php";
 
-$conn = db_connect();
-
-if(!$_POST['email'] || !$_POST['password']){
+if(!isset($_POST['email']) || !isset($_POST['password'])){
     conlog("[ERROR] Email and password not set!");
-// TODO: Redirect user to apropried page
-    exit();
+    exit(); // TODO: Redirect user to apropried page
 }
-$email = $_POST['email'];
-$password = $_POST['password'];
 
-if(!$row = mysqli_fetch_assoc(
-    mysqli_query($conn,
-//TODO: fix sql injection 
-        "SELECT * FROM users WHERE email=\"".$email."\" AND password=\"".$password."\";"))){
+$usr_email = $_POST['email'];
+$usr_password = $_POST['password'];
 
-    conlog("[ERROR] Wrong username and password!");
-//TODO: Redirect user to aproried page  
-    echo "<h1>Wrong email or password</h1>";
+$conn = new BookshelfDB();
+
+if(!$conn->validate_login($usr_email, $usr_password)){
+    conlog("[ERROR] Could not login");
     exit();
 }
 
+conlog("[INFO] User login succesfull");
 
-$_SESSION['logged'] = true;
-$_SESSION['email'] = $email;
+$_SESSION['email'] = $usr_email;
+$_SESSION['nickname'] = "nickname"; //TODO: ADD NICKNAME SYSTEM
 
+/*
 //TODO: FIX THIS SHIT
 $_SESSION['nickname'] = explode(' ',
     strtoupper(mysqli_fetch_assoc(
         mysqli_query($conn,
-            "SELECT fullname FROM users WHERE email=\"".$email."\";"))['fullname']))[0];
+            "SELECT fullname FROM users WHERE email=\"".$email."\";"))['fullname']))[0];*/
 
-conlog("[INFO] User login succesfull");
 
 header("Location: /bookshelf/index.html.php");

@@ -1,14 +1,4 @@
-<?php
-session_start();
-require_once "php/utility.php";
-
-if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
-	conlog("[INFO] No session detected");
-} else {
-	conlog("Logged: ".$_SESSION['logged']);
-	conlog("Email: ".$_SESSION['email']);
-}
-?>
+<?php session_start(); ?>
 
 <!DOCTYPE html>
 <html>
@@ -47,7 +37,7 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
 
             <div id="button-create-account">
                 <form action="php/logout.php" method="POST">
-                    <button type="submit">
+                    <button type="submit" class="button-send">
                         <span>Logout</span>
                     </button>
                 </form>

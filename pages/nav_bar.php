@@ -11,8 +11,9 @@ if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
     $name = "ACCOUNT";
 } else {
     $link = "account.html.php";
-    $name = $_SESSION['nickname']/*$_SESSION['email']*/;
+    $name = $_SESSION['nickname'];
 }
-echo "<a id=nav-bar-account href=".$link.">".$name."</a>"
+echo "<a id=nav-bar-account href=".$link.">".$name."</a>";
 ?>
+
 </nav>

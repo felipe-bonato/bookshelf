@@ -1,6 +1,6 @@
 :root {
     /* COLORS */
-    --primary-dark: #50AADD; 
+    --primary-dark: #50AADD;
     --primary-light: #8FD4EF;
 
     --secondary-dark: #F6A523;
@@ -44,4 +44,29 @@ body::-webkit-scrollbar-thumb {
     background-color: var(--primary-light);
     border-radius: 1rem;
     box-shadow: 0 0 1rem var(--shadow);
+}
+
+.button-send {
+    font-family: 'Proza Libre', sans-serif;
+    font-size: 1.25rem;
+    font-weight: 800;
+
+    color: var(--text-dark);
+    background-color: var(--primary-dark);
+    
+    height: 3rem;
+    width: 100%;
+
+    box-shadow: .125em .125em .5em var(--shadow);
+
+    padding: var(--padding-itens) 0 var(--padding-itens) 0;
+}
+
+.button-send:hover {
+    cursor: pointer;
+}
+
+.button-send:hover span {
+    color: var(--text-light);
+    text-shadow: .15em .15em .25em var(--shadow);
 }
