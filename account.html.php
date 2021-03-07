@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bookshelf!</title>
+		<title>Bookshelf! - %account_name%</title>
 		<meta charset="UTF-8">
 
 		<link rel="shortcut icon" href="imgs/page_icon.png">

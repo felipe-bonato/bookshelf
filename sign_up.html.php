@@ -3,7 +3,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bookshelf!</title>
+		<title>Bookshelf! - SignUp</title>
 		<meta charset="UTF-8">
 
 		<link rel="shortcut icon" href="imgs/page_icon.png">
@@ -21,7 +21,7 @@
 			<div id="title-text">
                 <span>Sign Up!</span>
             </div>
-            <form method="POST" action="php/sign_up.php" spellcheck="false" autocapitalize="off" badinput="false">
+            <form method="POST" action="php/sign_up.php" target="_parent" spellcheck="false" autocapitalize="off" badinput="false">
                 <fieldset id="email-c" class="item-grid item-margin">
                     <label>Email</label>
                     <input type="email" name="email" class=input-sizing placeholder="Insert email here" autocomplete="username" autofocus="true">

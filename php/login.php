@@ -1,4 +1,5 @@
 <?php
+session_start();
 /*
 LOGIN.PHP
  - Processes login and set cookies
@@ -17,21 +18,13 @@ $usr_password = $_POST['password'];
 $conn = new BookshelfDB();
 
 if(!$conn->validate_login($usr_email, $usr_password)){
-    conlog("[ERROR] Could not login");
+    conlog("[ERROR] Could not login / Wrong username and password");
     exit();
 }
 
 conlog("[INFO] User login succesfull");
 
 $_SESSION['email'] = $usr_email;
-$_SESSION['nickname'] = "nickname"; //TODO: ADD NICKNAME SYSTEM
-
-/*
-//TODO: FIX THIS SHIT
-$_SESSION['nickname'] = explode(' ',
-    strtoupper(mysqli_fetch_assoc(
-        mysqli_query($conn,
-            "SELECT fullname FROM users WHERE email=\"".$email."\";"))['fullname']))[0];*/
-
+$_SESSION['nickname'] = $conn->get_nickname(); //TODO: ADD NICKNAME SYSTEM
 
 header("Location: /bookshelf/index.html.php");

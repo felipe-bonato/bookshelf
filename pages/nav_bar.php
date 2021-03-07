@@ -6,12 +6,12 @@
     <a id=nav-bar-search href="search.html.php">SEARCH</a>
     <a id=nav-bar-basket href="cart.html.php">CART</a>
 <?php
-if(!isset($_SESSION['email']) or !isset($_SESSION['logged'])){
-    $link = "login.html.php";
-    $name = "ACCOUNT";
-} else {
+if(isset($_SESSION['email'])){
     $link = "account.html.php";
     $name = $_SESSION['nickname'];
+} else {
+    $link = "login.html.php";
+    $name = "ACCOUNT";
 }
 echo "<a id=nav-bar-account href=".$link.">".$name."</a>";
 ?>

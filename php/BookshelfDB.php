@@ -26,22 +26,47 @@ class BookshelfDB extends PDO
         }
     }
 
-    public function insert_user($email, $password, $fullname, $birthday, $address)
+    public function insert_user($email, $password, $fullname, $nickname=null, $birthday, $address)
     {
+        // DATA TREATMENT
+        if(!isset($email)) throw new Exception("Email is not set");
+        if(!isset($password)) throw new Exception("Password is not set");
+        if(!isset($fullname)) throw new Exception("Fullname is not set");
+        if(!isset($birthday)) throw new Exception("Birthday is not set");
+        if(!isset($address)) throw new Exception("Address is not set");
+
+        // this validates the birthday as a valid date
+        if(!$formated_birthday = DateTime::createFromFormat("Y-m-d", $birthday)){
+            throw new Exception("Birthday is not valid");
+        }
+        // gets back the date in a format which the db accepts
+        $formated_birthday = $formated_birthday->format('Y-m-d');
+        
+        if(!$hashed_password = password_hash($password, PASSWORD_DEFAULT)){
+            throw new Exception("Password is not valid");
+        }
+        
+        // INSETION
         try {
-            if(!$insert_stmt = $this->prepare("INSERT INTO users (id, email, password, fullname, birthday, address, deleted)
-            VALUES ('', :email, :password, :fullname, :birthday, :address, :deleted);")){
+            if(!$insert_stmt = $this->prepare(
+                    "INSERT INTO users
+                    (id, email, password, fullname, nickname, birthday, address, deleted)
+                    VALUES
+                    ('', :email, :password, :fullname, :nickname, :birthday, :address, :deleted);")
+                ){
                 throw new Exception("Could not prepare insertion statement");
             }
 
             return $insert_stmt->execute([ // return true if is able to do it
                 ':email' => $email,
-                ':password' => $password,
+                ':password' => $hashed_password,
                 ':fullname' => $fullname,
-                ':birthday' => $birthday,
+                ':nickname' => $nickname,
+                ':birthday' => $formated_birthday,
                 ':address' => $address,
                 ':deleted' => 0
             ]);
+            
         } catch(Exception | PDOException $e) {
             conlog("[ERROR] Could not execute insertion");
             conlog("[ERROR MSG] ".$e->getMessage());
@@ -70,7 +95,7 @@ class BookshelfDB extends PDO
 
             // if there is only one match in database
             if($res_len === 1){
-                return $res[0]['password'] === $password;
+                return  password_verify($password, $res[0]['password']);
             }
 
             if($res_len === 0){
@@ -85,6 +110,17 @@ class BookshelfDB extends PDO
             conlog("[ERROR MSG] ".$e->getMessage());
             return false;
         }
+    }
+
+    // TODO: ADD NICKNAME SYSTEM
+    public function get_nickname()
+    {
+        return "Nickname";
+    }
+
+    public function list_all_users()
+    {
+        return $this->query("SELECT * FROM users")->fetchAll();
     }
 }
 
