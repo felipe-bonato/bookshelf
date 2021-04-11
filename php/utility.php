@@ -20,3 +20,5 @@ function session_end() {
         session_destroy(); 
     }
 }
+
+$USER_UPLOADED_FILES = "C:/wamp64/www/bookshelf/users_upload";

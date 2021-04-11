@@ -12,7 +12,7 @@
 
 .logo-text {
     font-family: 'Proza Libre', sans-serif;
-    text-shadow: .1em .1em .1em var(--shadow);
+    text-shadow: .1em .1em .25em var(--shadow);
     color: var(--text-dark);
     background-color: var(--primary-light);
 }

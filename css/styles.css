@@ -21,6 +21,11 @@
     --margin-itens: 3rem;
     --transition-time: 250ms;
 
+    --rounding: 15px;
+    
+    --margin: 15px;
+    --pading: 15px;
+
 }
 
 * {
@@ -30,8 +35,6 @@
     border: 0;
     
     font-family: 'Proza Libre', Helvetica, sans-serif;
-    
-    color: var(--text-dark); 
 }
 
 body::-webkit-scrollbar {
@@ -51,18 +54,24 @@ body::-webkit-scrollbar-thumb {
     font-size: 1.25rem;
     font-weight: 800;
 
+    border-radius: var(--rounding);
+
     color: var(--text-dark);
     background-color: var(--primary-dark);
     
     height: 3rem;
     width: 100%;
-
-    box-shadow: .125em .125em .5em var(--shadow);
-
+    
+    box-shadow: .125em .125em .5em var(--shadow-light);
+    
     padding: var(--padding-itens) 0 var(--padding-itens) 0;
+
+    transition: transform calc(var(--transition-time) / 3) linear;
 }
 
 .button-send:hover {
+    box-shadow: .25em .25em .25em var(--shadow);
+    transform: scale(1.0625);
     cursor: pointer;
 }
 

@@ -3,18 +3,13 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>Bookshelf! - SignUp</title>
-		<meta charset="UTF-8">
-
-		<link rel="shortcut icon" href="imgs/page_icon.png">
-        <?php include "pages/fonts.php"; ?>
-		
+		<title>Bookshelf! • SignUp</title>
+		<?php include "pages/head.php" ?>
     	<link rel="stylesheet" href="css/styles.css">
 		<link rel="stylesheet" href="css/sign_up.css">
 	</head>
 
 	<body>
-        <?php include "pages/page_header_small.php"; ?>
 		<?php include "pages/nav_bar.php"; ?>
 
 		<main id=sign-up-c>

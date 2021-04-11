@@ -1,0 +1,65 @@
+#book-content li {
+    list-style: none;
+}
+
+#book-content li:not(:last-child) {
+    margin-bottom: 30px;
+}
+
+#book-content {
+    margin: 3% 20%;
+    padding: 3%;
+    border-radius: 15px;
+    background-color: var(--primary-light);
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: stretch;
+    align-content: stretch;
+}
+
+#book-content-cover {
+    align-self: center;
+    border-radius: 15px;
+}
+
+
+#book-content-detail {
+    /*align-self: center;*/
+    margin-left: 15px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+/*
+.book-content-item {
+    display: flex;
+    flex-direction: column;
+    
+}*/
+
+#book-content-tittle {
+    font-size: 5vw;
+}
+
+.book-content-item-tittle {
+    font-weight: 900;
+    font-size: 1rem;
+}
+
+.book-content-item-discription {
+    font-size: 1.5rem;
+}
+
+.book-content-item-isbn {
+    font-size: 1rem;
+}
+
+#book-content-buy {
+    text-decoration: none;
+    color: var(--text-light);
+    text-align: center;
+    padding: 15px;
+    background-color: var(--primary-dark);
+}

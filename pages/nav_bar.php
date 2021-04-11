@@ -2,18 +2,19 @@
 <link rel="stylesheet" href="css/nav_bar.css">
 
 <nav id=nav-bar-c>
-    <a id=nav-bar-home href="index.html.php">HOME</a>
-    <a id=nav-bar-search href="search.html.php">SEARCH</a>
-    <a id=nav-bar-basket href="cart.html.php">CART</a>
-<?php
+    <a href="index.html.php"><div class="nav-bar-item"><img height="22px" width="22px" src="imgs/nav_bar/home.svg" alt=""><span>HOME</span></div></a>
+    <!--a href="search.html.php"><div class="nav-bar-item"><img height="20px" width="20px" src="imgs/nav_bar/search.svg" alt=""><span>SEARCH</span></div></a-->
+    <?php
 if(isset($_SESSION['email'])){
     $link = "account.html.php";
     $name = $_SESSION['nickname'];
+    echo '<a href="sell.html.php"><div class="nav-bar-item"><img height="20px" width="20px" src="imgs/nav_bar/sell.svg" alt=""><span>SELL</span></div></a>';
+    //echo '<a href="cart.html.php"><div class="nav-bar-item"><img height="20px" width="20px" src="imgs/nav_bar/cart.svg" alt=""><span>CART</span></div></a>';
 } else {
     $link = "login.html.php";
-    $name = "ACCOUNT";
+    $name = "LOGIN";
 }
-echo "<a id=nav-bar-account href=".$link.">".$name."</a>";
+echo "<a href=".$link.'><div class="nav-bar-item"><img height="20px" width="20px" src="imgs/nav_bar/account.svg" alt=""><span>'.$name."</span></div></a>";
 ?>
 
 </nav>

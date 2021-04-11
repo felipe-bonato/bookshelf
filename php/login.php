@@ -25,6 +25,6 @@ if(!$conn->validate_login($usr_email, $usr_password)){
 conlog("[INFO] User login succesfull");
 
 $_SESSION['email'] = $usr_email;
-$_SESSION['nickname'] = $conn->get_nickname(); //TODO: ADD NICKNAME SYSTEM
+$_SESSION['nickname'] = strtoupper($conn->get_nickname($usr_email));
 
 header("Location: /bookshelf/index.html.php");

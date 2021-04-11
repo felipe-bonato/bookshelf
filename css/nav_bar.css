@@ -17,15 +17,14 @@
     /*font-family: "Proza Libre", sans-serif;*/
     font-weight: 800;
     font-size: 1.25rem;
-
+    
     z-index: 3;
 }
 
 #nav-bar-c a
 {
-    padding: .375em 1em .25em 1em;
     border-radius: 1em;
-    
+    line-height: 1em;
     text-decoration: none;
     
     color: var(--text-dark);
@@ -43,4 +42,19 @@
     
     box-shadow: .25em .25em .5em var(--shadow);
     
+}
+
+#nav-bar-c a:hover img {
+    filter: invert(1);
+}
+
+.nav-bar-item span {
+    margin-left: .25em;
+    height: 16px;
+}
+
+.nav-bar-item {
+    display: flex;
+    align-items: center;
+    padding: .375em 1em;
 }

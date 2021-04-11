@@ -1,0 +1,58 @@
+body {
+    background-color: var(--background);
+
+    --margin-itens: 3rem;
+}
+
+#sign-up-c {
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: space-between;
+    align-items: stretch; 
+
+    background-color: var(--primary-light);
+
+    font-family: 'Proza Libre', sans-serif;
+    font-size: 1.25rem;  
+
+    margin: 5rem 30%;
+    padding: 5%;
+
+    border-radius: 1em;
+}
+
+#terms-c {
+    font-size: 1rem;
+}
+
+#title-text {
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: .1em .1em .1em var(--shadow);
+
+    text-align: center;
+
+    margin: 0 0 var(--margin-itens) 0;
+}
+
+.input-sizing {
+    height: 3rem;
+    font-size: 1.25rem;
+    padding-left: 1rem;
+}
+
+
+.item-grid {
+    display: grid;
+    grid-template: auto auto;
+    gap: .5rem;
+}
+
+.item-margin {
+    margin: 0 0 var(--margin-itens) 0;
+}
+
+.sell-optional {
+    font-size: .75rem;
+    padding: 10px;
+}
