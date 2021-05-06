@@ -1,5 +1,7 @@
 <?php namespace app\controller;
 
+require_once '../core/view.php'; // ! FIX THIS, DO I REALLY NEED THIS?
+
 /**
  * Home controller
  */
@@ -7,7 +9,10 @@ class Home extends \core\Controller
 {
 	public function index_action(): void
 	{
-		echo 'Hello, i\'m inside the index method in the home controller';
+		\core\View::render('home/index.php', [
+			'name' => 'Felipe',
+			'languages' => ['C', 'Python', 'PHP']
+		]);
 	}
 
 	protected function before(): bool
