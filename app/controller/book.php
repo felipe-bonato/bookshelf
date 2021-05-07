@@ -7,7 +7,7 @@ class Book extends \core\Controller
 {
 	public function index_action(): void
 	{
-		echo 'Hello, i\'m inside the index method in the book controller';
+		\core\View::render_templeate('book/index.html');
 	}
 
 	public function edit_action(): void

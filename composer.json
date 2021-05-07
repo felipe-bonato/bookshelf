@@ -1,0 +1,13 @@
+{
+	"name": "felipebonato/bookshelf",
+	"description": "Bookshelf requirements",
+    "autoload": {
+        "psr-4": {
+            "core\\": "core/",
+            "app\\": "app/"
+        }
+    },
+    "require": {
+        "twig/twig": "^3.0"
+    }
+}
