@@ -1,0 +1,10 @@
+{
+	"db": {
+		"driver": "mysql",
+		"host": "localhost",
+		"port": 3306,
+		"schema": "avii_desenvweb",
+		"username": "root",
+		"password": "root"
+	}
+}

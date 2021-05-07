@@ -7,7 +7,8 @@ class Book extends \core\Controller
 {
 	public function index_action(): void
 	{
-		\core\View::render_templeate('book/index.html');
+		$books = \app\model\Book::get_all();
+		\core\View::render_templeate('book/index.html', ['books' => $books]);
 	}
 
 	public function edit_action(): void

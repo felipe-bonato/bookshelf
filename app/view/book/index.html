@@ -4,4 +4,9 @@
 
 {% block body %}
 	<h1>Books</h1>
+	<ul>
+	{% for book in books %}
+		<li>{{book.name}}</li>
+	{% endfor %}
+	</ul>
 {% endblock %}
