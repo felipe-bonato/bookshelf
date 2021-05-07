@@ -23,4 +23,16 @@ class View
 			echo 'ERROR: FILE'.$file.' NOT FOUND'; //TODO FIX THIS
 		}
 	}
+
+	public static function render_templeate(string $template, array $args=[]): void
+	{
+		static $twig = null;
+
+		if($twig === null){
+			$loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__).'/app/view');
+			$twig = new \Twig\Environment($loader);
+		}
+
+		echo $twig->render($template, $args);
+	}
 }

@@ -9,13 +9,15 @@
 	<h1>Hello, World!</h1>
 	
 	<?php
-		spl_autoload_register(function ($class){
+		require_once dirname(__DIR__).'/vendor/autoload.php';
+
+		/*spl_autoload_register(function ($class){
 			$root = dirname(__DIR__);
 			$file = $root . '/' . str_replace('\\', '/', $class) . '.php';
 			if (is_readable($file)) {
-				require $file;
+				require_once $file;
 			}
-		});
+		});*/
 		
 		$router = new core\Router();
 		
@@ -31,6 +33,5 @@
 		
 		$router->dispatch($_SERVER['QUERY_STRING']);
 	?>
-	
 </body>
 </html>
