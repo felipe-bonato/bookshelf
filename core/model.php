@@ -15,21 +15,18 @@ abstract class Model
 		if($conn !== null){
 			return $conn;
 		}
-
-		try {
-			if(!$enconded_config = file_get_contents(dirname(__DIR__).'\core\\'.$path)){
-				throw new \Exception('Could not open file');
-			}
-			$config = json_decode($enconded_config, true);
-		} catch (\Exception $e) {
-			echo 'Could not read file: '.$path;
+	
+		if(!$enconded_config = file_get_contents(dirname(__DIR__).'\core\\'.$path)){
+			throw new \Exception('Could not open file '.$path);
 		}
+		$config = json_decode($enconded_config, true);
+		
 		$dsn = $config['db']['driver'].':dbname='.$config['db']['schema'].';host'.$config['db']['host'];
 
 		try {
 			return new \PDO($dsn, $config['db']['username'], $config['db']['password']);
 		} catch (\PDOException $e) {
-			echo "Could not connect to database".$e->getMessage();
+			throw new \Exception("Could not connect to database ".$e->getMessage());
 		}
 	}
 }
