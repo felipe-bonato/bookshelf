@@ -24,7 +24,9 @@ abstract class Model
 		$dsn = $config['db']['driver'].':dbname='.$config['db']['schema'].';host'.$config['db']['host'];
 
 		try {
-			return new \PDO($dsn, $config['db']['username'], $config['db']['password']);
+			$conn = new \PDO($dsn, $config['db']['username'], $config['db']['password']);
+			$conn->setAttribute(\PDO::ATTR_ERRMODE, \PDO::ERRMODE_EXCEPTION);
+			return $conn;
 		} catch (\PDOException $e) {
 			throw new \Exception("Could not connect to database ".$e->getMessage());
 		}
