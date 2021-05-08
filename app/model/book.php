@@ -20,9 +20,6 @@ class Book extends \core\Model
 			}
 		} catch (\PDOException $e) {
 			echo 'DB connection error: '.$e->getMessage();
-		} catch (\Exception $e) {
-			echo 'Querry error: '.$e->getMessage();
 		}
-
 	}
 }

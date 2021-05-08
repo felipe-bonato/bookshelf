@@ -74,14 +74,14 @@ class Router
 	public function dispatch($url)
 	{
 		if(!$this->match($url)) {
-			echo 'Route '.$url.' not found!'; // TODO: FIX THIS ERROR
+			throw new \Exception('Route '.$url.' not found!');
 			return;
 		}
 
-		$controller = $this->get_namespace() . $this->to_pascal_case($this->remove_hyphens($this->params['controller'])); // ! THIS IS DIFFERENT IN MY ORIGINAL CODE. WHY THO?
+		$controller = $this->get_namespace().$this->to_pascal_case($this->remove_hyphens($this->params['controller']));
 
 		if(!class_exists($controller)) {
-			echo 'Controller class '.$controller.' not found!'; // TODO: FIX THIS ERROR
+			throw new \Exception('Controller class '.$controller.' not found!');
 			return;
 		}
 		

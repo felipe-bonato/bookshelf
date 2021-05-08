@@ -6,5 +6,9 @@
 		"schema": "avii_desenvweb",
 		"username": "root",
 		"password": "root"
+	},
+
+	"php": {
+		"show_errors": true
 	}
 }

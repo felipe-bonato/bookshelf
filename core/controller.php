@@ -22,7 +22,7 @@ abstract class Controller
 		$method = $name.'_action';
 
 		if(!method_exists($this, $method)){
-			echo 'Method '.$method.' was not found in controller '.get_class($this).'!'; // TODO: ADD ERROR
+			throw new \Exception('Method '.$method.' was not found in controller '.get_class($this).'!');
 		}
 		
 		if(!$this->before()){
