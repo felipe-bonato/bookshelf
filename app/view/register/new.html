@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+
+{% block title %}Register{% endblock %}
+
+{% block body %}
+	<h1>Register page</h1>
+
+	<form method="POST" action="insert">
+		<fieldset>
+			<label>Email</label>
+			<input type="email" name="email">
+		</fieldset>
+		<fieldset>
+			<label>Password</label>
+			<input type="password" name="password">
+			<small>Password must be 8 or above characters and contain at least a letter and a number.</small>
+		</fieldset>
+		<fieldset>
+			<label>Fullname</label>
+			<input type="text" name="fullname">
+		</fieldset>
+		<fieldset>
+			<label>Nickname</label>
+			<input type="text" name="nickname">
+			<small>Optional; If not set we will call you by your first name.</small>
+		</fieldset>
+		<fieldset>
+			<label>Birthday</label>
+			<input type="date" name="birthday">
+		</fieldset>
+		<fieldset>
+			<label>Address</label>
+			<input type="text" name="address">
+		</fieldset>
+		<fieldset>
+			<input type="checkbox" name="terms">
+			<label>I read and agree with the <a href="terms.html.php">Terms and Conditions</a></label>
+		</fieldset>
+		<fieldset>
+			<button type="submit">
+				<span>Register!</span>
+			</button>
+		</fieldset>
+	</form>
+{% endblock %}
