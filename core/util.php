@@ -16,10 +16,3 @@ function load_config(): array
 	}
 	return json_decode($enconded_config, true);
 }
-
-
-function valid_date($date, $format='Y-m-d H:i:s')
-{
-    $d = \DateTime::createFromFormat($format, $date);
-    return $d && $d->format($format) == $date;
-}
