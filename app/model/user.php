@@ -1,5 +1,6 @@
 <?php namespace app\model;
 
+use Exception;
 use PDO;
 
 class User extends \core\Model
@@ -23,7 +24,8 @@ class User extends \core\Model
 		}
 
 		if(!$this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT)){
-			throw new \Exception('Could not set password');
+			$this->errors[] = 'Invalid password';
+			return false;
 		}
 
 		$conn = static::get_db_conection();
@@ -48,6 +50,8 @@ class User extends \core\Model
 		])){
 			throw new \Exception('Could not insert user into database');
 		};
+
+		return true;
 	}
 
 	public function validate(): void // TODO: maybe return the array of erros?
@@ -67,26 +71,37 @@ class User extends \core\Model
 			$this->errors[] = 'Password must have at least 1 letter';
 		}
 		
-		if(!preg_match('/.*\d+.*/i', $this->password) == 0) {
+		if(!preg_match('/.*\d+.*/i', $this->password)) {
 			$this->errors[] = 'Password must have at least 1 number';
 		}
 
 		if(strlen($this->fullname) == 0){
 			$this->errors[] = 'Name must be set';
 		}
-
+		
+		if(strlen($this->address) < 6){
+			$this->errors[] = 'Invalid Address';
+		}
+		
+		// Special Cases
+		
 		if(strlen($this->nickname) == 0){
 			$this->nickname = 'NULL';
 		}
 
-		require_once('../core/util.php'); // ! WHY GOD WHY
-		if(!\core\valid_date($this->birthday)){
-			$this->erros[] = 'Birthday is an invalid date';
+		if(!$this->birthday = \DateTime::createFromFormat('Y-m-d', $this->birthday)){
+			$this->errors[] = 'Invalid birthday';
+		} else {
+			if(!$this->birthday = $this->birthday->format('Y-m-d')){
+				$this->errors[] = 'Invalid birthday';
+			} else {
+				if($this->birthday < '1900-01-01'){
+					$this->errors[] = 'I doubt that you were born before 1900';
+				}
+			}
 		}
 
-		if(strlen($this->address) < 6){
-			$this->erros[] = 'Invalid Address';
-		}
+		
 	}
 
 	private function email_exists(string $email): bool
