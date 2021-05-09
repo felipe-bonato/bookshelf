@@ -1,28 +1,27 @@
-<?php namespace app\controller;
+<?php namespace App\Controller;
 
-class Register extends \core\Controller
+class Register extends \Core\Controller
 {
 	public function new_action(): void
 	{
-		\core\View::render_templeate('register/new.html');
+		\Core\View::render_templeate('register/new.html');
 	}
 
 	public function insert_action(): void
 	{
-		$user = new \app\model\User($_POST);
+		$user = new \App\Model\User($_POST);
 		
 		if(!$user->insert()){
-			\core\View::render_templeate('register/new.html', [
+			\Core\View::render_templeate('register/new.html', [
 				'user' => $user
 			]);
 			return;
 		}
-		include_once('../util.php');
-		\core\redirect('register/success.html');
+		\Core\redirect('register/success');
 	}
 
 	public function success_action(): void
 	{
-		\core\View::render_templeate('register/success.html');
+		\Core\View::render_templeate('register/success.html');
 	}
 }
