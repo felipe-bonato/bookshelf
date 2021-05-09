@@ -1,4 +1,4 @@
-<?php namespace core;
+<?php namespace Core;
 
 /**
  * Bookshelf Exception Class
@@ -56,7 +56,7 @@ class Error
 			<p>Thrown from <b>'.$exception->getFile().'</b> at line <b>'.$exception->getLine().'</b></p>
 		</div>';
 		
-		include_once('util.php'); // ! THIS NEEDS TO BE FIXED <---------------------------------------------------
+		//require_once 'Util.php';
 		$config = load_config();
 		if($config['php']['show_errors']){
 			echo $error_msg;

@@ -3,10 +3,10 @@
 require_once dirname(__DIR__).'\vendor\autoload.php';
 
 error_reporting(E_ALL);
-set_error_handler('core\Error::error_handler');
-set_exception_handler('core\Error::exception_handler');
+set_error_handler('\Core\Error::error_handler');
+set_exception_handler('\Core\Error::exception_handler');
 
-$router = new core\Router();
+$router = new Core\Router();
 
 // Main page
 $router->add("",[

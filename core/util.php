@@ -1,4 +1,4 @@
-<?php namespace core;
+<?php namespace Core;
 
 function conlog($messege) {
 	echo '<script>console.log("'.$messege.'");</script>';
@@ -19,5 +19,6 @@ function load_config(): array
 
 function redirect(string $url): void
 {
-	header('Location: http://'.$_SERVER['HTTP_HOST'].$url, true, 303);
+	\Core\conlog('http://'.$_SERVER['HTTP_HOST'].'/'.$url);
+	header('Location: http://'.$_SERVER['HTTP_HOST'].'/'.$url, true, 303);
 }

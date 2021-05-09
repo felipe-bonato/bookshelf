@@ -1,6 +1,6 @@
-<?php namespace app\model;
+<?php namespace App\Model;
 
-class Book extends \core\Model
+class Book extends \Core\Model
 {
 	public static function get_all(): array
 	{

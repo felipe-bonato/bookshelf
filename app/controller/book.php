@@ -1,14 +1,14 @@
-<?php namespace app\controller;
+<?php namespace App\Controller;
 
 /**
  * Book controller
  */
-class Book extends \core\Controller
+class Book extends \Core\Controller
 {
 	public function index_action(): void
 	{
-		$books = \app\model\Book::get_all();
-		\core\View::render_templeate('book/index.html', ['books' => $books]);
+		$books = \App\Model\Book::get_all();
+		\Core\View::render_templeate('book/index.html', ['books' => $books]);
 	}
 
 	public function edit_action(): void
