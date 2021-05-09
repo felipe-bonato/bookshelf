@@ -16,13 +16,13 @@ class Home extends \Core\Controller
 	protected function before(): bool
 	{
 		// TODO: add checks
-		echo 'Before';
+		//echo 'Before';
 		return true;
 	}
 
 	protected function after(): void
 	{
-		echo 'After';
+		//echo 'After';
 	}
 }
 

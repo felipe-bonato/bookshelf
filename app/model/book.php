@@ -7,7 +7,7 @@ class Book extends \Core\Model
 		try {
 			$conn = static::get_db_conection();
 			
-			if(!$stmt = $conn->prepare("SELECT `id`, `name`, `author`, `owner`, `cover_image`, `price` FROM books;")){
+			if(!$stmt = $conn->prepare("SELECT book.id AS id, book.name AS name, author.name AS author, user.nickname AS owner, book.cover_image AS cover_image, book.price AS price FROM book INNER JOIN user ON book.id_owner = user.id LEFT JOIN author ON book.id_author = author.id;")){
 				throw new \Exception("Could not prepare fetch book name by book id statement");
 			}
 			
