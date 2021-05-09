@@ -12,7 +12,9 @@ class Register extends \core\Controller
 		$user = new \app\model\User($_POST);
 		
 		if(!$user->insert()){
-			var_dump($user->errors); // TODO: is this really a vardump?
+			\core\View::render_templeate('register/new.html', [
+				'user' => $user
+			]);
 			return;
 		}
 

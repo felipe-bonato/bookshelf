@@ -36,9 +36,9 @@ class Error
 	}
 
 	/**
-	 * @param Exception $exception 
+	 * @param Throwable $exception 
 	 */
-	public static function exception_handler(\Exception $exception): void
+	public static function exception_handler(\Throwable $exception): void
 	{
 		$code = $exception->getCode();
 		if($code !== 404){

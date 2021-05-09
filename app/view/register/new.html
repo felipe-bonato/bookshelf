@@ -5,6 +5,16 @@
 {% block body %}
 	<h1>Register page</h1>
 
+	{% if user.errors is not empty %}
+		<div>
+			<ul>
+				{% for error in user.errors %}	
+					<li>{{error}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
 	<form method="POST" action="insert">
 		<fieldset>
 			<label>Email</label>
