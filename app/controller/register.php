@@ -17,7 +17,12 @@ class Register extends \core\Controller
 			]);
 			return;
 		}
+		include_once('../util.php');
+		\core\redirect('register/success.html');
+	}
 
+	public function success_action(): void
+	{
 		\core\View::render_templeate('register/success.html');
 	}
 }

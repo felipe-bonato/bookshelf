@@ -16,3 +16,8 @@ function load_config(): array
 	}
 	return json_decode($enconded_config, true);
 }
+
+function redirect(string $url): void
+{
+	header('Location: http://'.$_SERVER['HTTP_HOST'].$url, true, 303);
+}
