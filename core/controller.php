@@ -1,4 +1,4 @@
-<?php namespace core;
+<?php namespace Core;
 
 abstract class Controller
 {

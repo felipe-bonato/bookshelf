@@ -1,9 +1,6 @@
-<?php namespace app\model;
+<?php namespace App\Model;
 
-use Exception;
-use PDO;
-
-class User extends \core\Model
+class User extends \Core\Model
 {
 	public function __construct(array $data)
 	{

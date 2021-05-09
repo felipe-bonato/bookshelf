@@ -1,4 +1,4 @@
-<?php namespace core;
+<?php namespace Core;
 
 /**
  * Responsible for routing app requests
@@ -103,7 +103,7 @@ class Router
 
 	private function get_namespace(): string
 	{
-		$namespace = 'app\controller\\';
+		$namespace = 'App\Controller\\';
 		if(array_key_exists('namespace', $this->params)){
 			$namespace .= $this->params['namespace'].'\\';
 		}

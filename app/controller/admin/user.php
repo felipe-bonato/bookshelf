@@ -1,6 +1,6 @@
-<?php namespace app\controller\admin;
+<?php namespace App\Controller\Admin;
 
-class User extends \core\Controller
+class User extends \Core\Controller
 {
 	public function index_action(): void
 	{

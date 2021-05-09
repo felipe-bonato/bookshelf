@@ -1,15 +1,13 @@
-<?php namespace app\controller;
-
-
+<?php namespace App\Controller;
 
 /**
  * Home controller
  */
-class Home extends \core\Controller
+class Home extends \Core\Controller
 {
 	public function index_action(): void
 	{
-		\core\View::render_templeate('home/index.html', [
+		\Core\View::render_templeate('home/index.html', [
 			'name' => 'Felipe',
 			'languages' => ['C', 'Python', 'PHP']
 		]);
