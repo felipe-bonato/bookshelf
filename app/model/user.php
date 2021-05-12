@@ -124,6 +124,23 @@ class User extends \Core\Model
 		return $res;
 	}
 
+	public static function get_user_by_id(int $id)
+	{
+		$conn = static::get_db_conection();
+		$stmt = $conn->prepare('SELECT * FROM user WHERE user.id = :id');
+		
+		if($stmt === 0){
+			throw new \Exception('Could not prepare query for getting user by email');
+		}
+		
+		$stmt->execute([':id' => $id]);
+
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+		$res = $stmt->fetch();
+
+		return $res;
+	}
+
 	/**
 	 * @return bool|User Returns false on wrong password and/or email; else returns the User object
 	 */
