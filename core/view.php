@@ -19,6 +19,7 @@ class View
 			$loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__).'/app/view');
 			$twig = new \Twig\Environment($loader);
 			$twig->addGlobal('session', $_SESSION);
+			$twig->addGlobal('flash', \App\Flash::get_messages());
 		}
 
 		echo $twig->render($template, $args);
