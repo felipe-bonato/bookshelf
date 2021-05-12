@@ -2,7 +2,7 @@
 
 class User extends \Core\Model
 {
-	public function __construct(array $data)
+	public function __construct(array $data=[])
 	{
 		foreach($data as $key => $value){
 			$this->$key = $value;
@@ -14,7 +14,7 @@ class User extends \Core\Model
 	 */
 	public function insert(): bool
 	{
-		$this->validate();
+		$this->validate_register_data();
 
 		if(!empty($this->errors)){
 			return false;
@@ -51,12 +51,12 @@ class User extends \Core\Model
 		return true;
 	}
 
-	public function validate(): void // TODO: maybe return the array of erros?
+	public function validate_register_data(): void // TODO: maybe return the array of erros?
 	{
 		if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
 			$this->errors[] = 'Invalid email';
 		}
-		if($this->email_exists($this->email)){
+		if(static::email_exists($this->email)){
 			$this->errors[] = 'Email already registred';
 		}
 
@@ -101,17 +101,39 @@ class User extends \Core\Model
 		
 	}
 
-	private function email_exists(string $email): bool
+	public static function email_exists(string $email): bool
+	{
+		return !empty(User::get_user_by_email($email));
+	}
+
+	public static function get_user_by_email(string $email)
 	{
 		$conn = static::get_db_conection();
-		$stmt = $conn->prepare('SELECT COUNT(id) AS email_count FROM user WHERE email = :email');
+		$stmt = $conn->prepare('SELECT * FROM user WHERE email = :email');
 		
 		if($stmt === 0){
-			throw new \Exception('Could not prepare query for duplicate emails');
+			throw new \Exception('Could not prepare query for getting user by email');
 		}
 		
 		$stmt->execute([':email' => $email]);
 
-		return intval($stmt->fetch()['email_count']) > 0; //TODO: verify this
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+		$res = $stmt->fetch();
+
+		return $res;
+	}
+
+	public static function authenticate(string $email, string $password)
+	{
+		$user = static::get_user_by_email($email);
+		if(!$user){
+			return false;
+		}
+
+		if(!password_verify($password, $user->password)){
+			return false;
+		}
+
+		return $user;
 	}
 }
