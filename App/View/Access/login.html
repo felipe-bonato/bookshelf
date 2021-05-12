@@ -15,12 +15,12 @@
 		</div>
 	{% endif %}
 
-	<form method="POST" action="login/validate" id="register-new-form">
+	<form method="POST" action="access/validate" id="register-new-form">
 		<fieldset>
 			<label>Email</label>
-			<input type="email" name="email" value="{{ email }}" required>
+			<input type="email" name="email" value="{{ user.email }}" required>
 		</fieldset>
-		<fieldset> <!-- TODO: MAKE EYE THING-->
+		<fieldset>
 			<label>Password</label>
 			<input type="password" name="password" id="password" required>
 			<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
