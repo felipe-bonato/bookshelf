@@ -18,7 +18,7 @@ class View
 		if($twig === null){
 			$loader = new \Twig\Loader\FilesystemLoader(dirname(__DIR__).'/app/view');
 			$twig = new \Twig\Environment($loader);
-			$twig->addGlobal('session', $_SESSION);
+			$twig->addGlobal('user', \App\Auth::get_user());
 			$twig->addGlobal('flash', \App\Flash::get_messages());
 		}
 

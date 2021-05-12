@@ -18,9 +18,7 @@ class Access extends \Core\Controller
 		$user = \App\Model\User::authenticate($_POST['email'], $_POST['password']);
 
 		if($user){
-			
-			$_SESSION['user_nickname'] = $user->nickname;
-			$_SESSION['user_email'] = $user->email;
+			\App\Auth::login($user);
 
 			\App\Flash::add_message('You are now logged in!', \App\Flash::SUCCESS);
 
@@ -37,17 +35,7 @@ class Access extends \Core\Controller
 
 	public function logout_action(): void
 	{
-		$_SESSION = array(); // Unset all session variables
-	
-		if(ini_get('session.use_cookies')){ // Delete the cookies
-			$params = session_get_cookie_params();
-			setcookie(session_name(), '', time() - 42000,
-				$params['path'], $params['domain'],
-				$params['secure'], $params['httponly']
-			);
-		}
-
-		session_destroy(); // Delete the session
+		\App\Auth::logout();
 		
 		\Core\redirect('/access/show-logout-message');
 	}

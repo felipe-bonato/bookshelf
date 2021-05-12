@@ -11,7 +11,7 @@
 	{% block nav %}
 	<nav>
 		<a href="/">Home</a>
-		{% if session.user_email %}
+		{% if user %}
 			<a href="/logout">Logout</a>
 		{% else %}
 			<a href="/register">Register</a>
@@ -24,7 +24,7 @@
 	<!-- FLASH MESSAGES -->
 	{% for message in flash %}
 		<div id="flash" class="flash-{{message.type}}">
-			{{ message.text }}
+			<span>{{ message.text }}</span>
 		</div>
 	{% endfor %}
 	
