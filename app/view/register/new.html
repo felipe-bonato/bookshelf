@@ -23,6 +23,7 @@
 		<fieldset> <!-- TODO: MAKE EYE THING-->
 			<label>Password</label>
 			<input type="password" name="password" id="password" required>
+			<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
 			<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
 		</fieldset>
 		<fieldset>
@@ -60,6 +61,20 @@
 			crossorigin="anonymous"></script>
 	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
 	<script>
+		function toggle_password_visibility(){
+			let password = document.getElementById("password");
+			let vis = document.getElementById("password-visibility-img");
+			if(password.type === "password"){
+				password.type = "text";
+				vis.src = "/img/icon/visibility_off.svg";
+			} else {
+				password.type = "password"
+				vis.src = "/img/icon/visibility_on.svg";
+			}
+			return false;
+		}
+		
+		
 		$.validator.addMethod('passwordLetterAndNumber', function(value, element, param){
 				if(value != '') {
 					if(value.match(/.*[a-z]+.*/i) == null) {

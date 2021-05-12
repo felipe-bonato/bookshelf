@@ -22,3 +22,12 @@ function redirect(string $url): void
 	\Core\conlog('http://'.$_SERVER['HTTP_HOST'].'/'.$url);
 	header('Location: http://'.$_SERVER['HTTP_HOST'].'/'.$url, true, 303);
 }
+
+function put($var): void
+{
+	if(is_string($var)){
+		echo($var);
+	} else {
+		var_dump($var);
+	}
+}
