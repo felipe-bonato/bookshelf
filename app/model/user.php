@@ -82,8 +82,9 @@ class User extends \Core\Model
 		
 		// Special Cases
 		
-		if(strlen($this->nickname) == 0){
-			$this->nickname = 'NULL';
+		if(empty($this->nickname) == 0){
+			$fullname_arr = explode(' ', $this->fullname);
+			$this->nickname = $fullname_arr[0];
 		}
 
 		if(!$this->birthday = \DateTime::createFromFormat('Y-m-d', $this->birthday)){
@@ -123,6 +124,9 @@ class User extends \Core\Model
 		return $res;
 	}
 
+	/**
+	 * @return bool|User Returns false on wrong password and/or email; else returns the User object
+	 */
 	public static function authenticate(string $email, string $password)
 	{
 		$user = static::get_user_by_email($email);

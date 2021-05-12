@@ -10,8 +10,13 @@
 	{% block nav %}
 	<nav>
 		<a href="/">Home</a>
-		<a href="/register">Register</a>
-		<a href="/login">Login</a>
+		{% if session.user_email %}
+			<a href="/logout">Logout</a>
+		{% else %}
+			<a href="/register">Register</a>
+			<a href="/login">Login</a>
+		{% endif %}
+		
 	</nav>
 	{% endblock nav %}
 	

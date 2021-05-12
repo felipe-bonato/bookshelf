@@ -3,7 +3,7 @@
 {% block title %}Home{% endblock %}
 
 {% block body %}
-	<h1>Hello from inside home's view, {{ name }}!</h1>
+	<h1>Hello from inside home's view, {% if session.user_email %}{{ session.user_nickname }}{% else %}stranger{% endif %}!</h1>
 	<h2>Programming Languages:</h2>
 	<ul>
 		{% for lang in languages %}
