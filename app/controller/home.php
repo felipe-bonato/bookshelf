@@ -12,17 +12,5 @@ class Home extends \Core\Controller
 			'languages' => ['C', 'Python', 'PHP']
 		]);
 	}
-
-	protected function before(): bool
-	{
-		// TODO: add checks
-		//echo 'Before';
-		return true;
-	}
-
-	protected function after(): void
-	{
-		//echo 'After';
-	}
 }
 

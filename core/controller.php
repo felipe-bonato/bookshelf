@@ -37,8 +37,17 @@ abstract class Controller
 	 * Before filter, called before the action method
 	 * 
 	 */
-	protected function before(): bool { return true; }
+	protected function before(): void { }
 
 	protected function after(): void { }
+
+	public function require_login()
+	{
+		if(!\App\Auth::get_user()){
+			\App\Auth::set_return_page();
+			\App\Flash::add_message("Please login before accessing the page", \App\Flash::INFO);
+			\Core\redirect('/login');
+		}
+	}
 
 }
