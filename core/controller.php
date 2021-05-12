@@ -25,7 +25,9 @@ abstract class Controller
 			throw new \Exception('Method '.$method.' was not found in controller '.get_class($this).'!');
 		}
 		
-		if(!$this->before()){
+		// It must be === false cause it returns none or a bool
+		// If you compare only using if before it will aways go
+		if($this->before() === false){
 			return;
 		}
 
