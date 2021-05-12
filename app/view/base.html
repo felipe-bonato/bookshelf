@@ -7,6 +7,7 @@
 	<title>{% block title %}{% endblock %} • Bookshelf!</title>
 </head>
 <body>
+	<!-- NAVBAR -->
 	{% block nav %}
 	<nav>
 		<a href="/">Home</a>
@@ -19,6 +20,13 @@
 		
 	</nav>
 	{% endblock nav %}
+
+	<!-- FLASH MESSAGES -->
+	{% for message in flash %}
+		<div id="flash" class="flash-{{message.type}}">
+			{{ message.text }}
+		</div>
+	{% endfor %}
 	
 	{% block body %}{% endblock %}
 	
