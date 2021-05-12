@@ -29,4 +29,14 @@ class Auth
 			return Model\User::get_user_by_id($_SESSION['user_id']); //? Maybe change this to email?
 		}
 	}
+
+	public static function set_return_page(): void
+	{
+		$_SESSION['return_to'] = $_SERVER['REQUEST_URI'];
+	}
+	
+	public static function get_return_page(): string
+	{
+		return $_SESSION['return_to'] ?? '';
+	}
 }

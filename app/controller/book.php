@@ -15,16 +15,4 @@ class Book extends \Core\Controller
 	{
 		echo 'Hello, i\'m inside the teste_de_caminho method in the bookz controller yo';
 	}
-
-	protected function before(): bool
-	{
-		// TODO: add checks
-		//echo 'Before';
-		return true;
-	}
-
-	protected function after(): void
-	{
-		//echo 'After';
-	}
 }
