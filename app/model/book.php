@@ -11,23 +11,32 @@ class Book extends \Core\Model
 
 	public static function get_all(): array
 	{
-		try {
-			$conn = static::get_db_conection();
+		$conn = static::get_db_conection();
 			
-			if(!$stmt = $conn->prepare("SELECT book.id AS id, book.name AS name, author.name AS author, user.nickname AS owner, book.cover_image AS cover_image, book.price AS price FROM book INNER JOIN user ON book.id_owner = user.id LEFT JOIN author ON book.id_author = author.id;")){
-				throw new \Exception("Could not prepare fetch book name by book id statement");
-			}
-			
-			if(!$stmt->execute()){
-				throw new \Exception("Could not execute database query");
-			}
-			
-			if($res = $stmt->fetchAll(\PDO::FETCH_ASSOC)){ //TODO: THIS MIGHT NEED TO CHANGE
-				return $res;
-			}
-		} catch (\PDOException $e) {
-			echo 'DB connection error: '.$e->getMessage();
+		if(!$stmt = $conn->prepare("SELECT id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image FROM book WHERE book.deleted_at IS NULL;")){
+			throw new \Exception("Could not prepare fetch book name by book id statement");
 		}
+		
+		if(!$stmt->execute()){
+			throw new \Exception("Could not execute database query");
+		}
+		
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
+	}
+
+	public static function get_all_deleted(): array
+	{
+		$conn = static::get_db_conection();
+			
+		if(!$stmt = $conn->prepare("SELECT id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image FROM book WHERE book.deleted_at IS NOT NULL;")){
+			throw new \Exception("Could not prepare fetch book name by book id statement");
+		}
+		
+		if(!$stmt->execute()){
+			throw new \Exception("Could not execute database query");
+		}
+		
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
 	}
 
 	public function insert(): bool
@@ -45,9 +54,9 @@ class Book extends \Core\Model
 
 		if(!$stmt = $conn->prepare(
 				'INSERT INTO book
-				(id, id_owner, id_buyer, id_author, id_genre, name, isbn, price, cover_image, created_at, last_modified_at, deleted_at)
+				(id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image, created_at, last_modified_at, deleted_at)
 				VALUES
-				(NULL, :id_owner, NULL, :id_author, :id_genre, :name, :isbn, :price, :cover_image, :created_at, :last_modified_at, NULL);')
+				(NULL, :id_owner, NULL, :id_genre, :name, :author, :isbn, :price, :cover_image, :created_at, :last_modified_at, NULL);')
 			){
 			throw new \Exception('Could not prepare insertion statement');
 		}
@@ -56,7 +65,7 @@ class Book extends \Core\Model
 		
 		if(!$stmt->execute([ // return true if was able to do it
 			':id_owner' => $this->id_owner,
-			':id_author' => $this->id_author,
+			':id_author' => $this->author,
 			':id_genre' => $this->id_genre,
 			':name' => $this->name,
 			':isbn' => $this->isbn,

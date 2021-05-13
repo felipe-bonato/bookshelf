@@ -10,6 +10,10 @@ class User extends \Core\Controller
 	public function list_action(): void
 	{
 		$users = \App\Model\User::get_all();
-		\Core\View::render_templeate('admin/user/list.html', ['users' => $users]);
+		$deleted_users = \App\Model\User::get_all_deleted();
+		\Core\View::render_templeate('admin/user/list.html', [
+			'users' => $users,
+			'deleted_users' => $deleted_users
+		]);
 	}
 }
