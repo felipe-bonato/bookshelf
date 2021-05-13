@@ -79,4 +79,21 @@ class Book extends \Core\Model
 
 		return true;
 	}
+
+	public static function get_book_by_id(int $id)
+	{
+		$conn = static::get_db_conection();
+		$stmt = $conn->prepare('SELECT * FROM book WHERE book.id = :id AND book.deleted_at IS NULL');
+		
+		
+		if($stmt === 0){
+			throw new \Exception('Could not prepare query for getting user by email');
+		}
+		
+		$stmt->execute([':id' => $id]);
+
+		$stmt->setFetchMode(\PDO::FETCH_CLASS, get_called_class());
+		
+		return $stmt->fetch() ?? [];
+	}
 }
