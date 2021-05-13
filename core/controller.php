@@ -43,7 +43,7 @@ abstract class Controller
 
 	protected function after(): void { }
 
-	public function require_login()
+	protected function require_login()
 	{
 		if(!\App\Auth::get_user()){
 			\App\Auth::set_return_page();
