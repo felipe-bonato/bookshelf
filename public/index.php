@@ -32,7 +32,7 @@ $router->add('logout',[
 
 $router->add('{controller}/{action}');
 $router->add('{controller}/{id:\d+}/{action}');
-$router->add('admin/{action}/{controller}', ['namespace' => 'admin']);
+$router->add('admin/{controller}/{action}', ['namespace' => 'admin']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);
 ?>

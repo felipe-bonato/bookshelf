@@ -11,8 +11,29 @@ class Book extends \Core\Controller
 		\Core\View::render_templeate('book/index.html', ['books' => $books]);
 	}
 
-	public function edit_action(): void
+	public function sell_action(): void
 	{
-		echo 'Hello, i\'m inside the teste_de_caminho method in the bookz controller yo';
+		$this->require_login();
+		
+		$book = new \App\Model\Book($_POST);
+		\Core\View::render_templeate('book/sell.html', ['book' => $book]);
+	}
+
+	public function insert_action(): void
+	{
+		$book = new \App\Model\Book($_POST);
+		
+		if(!$book->insert()){
+			\Core\View::render_templeate('book/sell.html', [
+				'book' => $book
+			]);
+			return;
+		}
+		\App\redirect('book/success');
+	}
+
+	public function success_action(): void
+	{
+		\Core\View::render_templeate('book/success.html');
 	}
 }
