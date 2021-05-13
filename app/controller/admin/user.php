@@ -2,20 +2,9 @@
 
 class User extends \Core\Controller
 {
-	public function index_action(): void
+	public function list_action(): void
 	{
-		echo 'Hello, i\'m inside the index method in the admin controller';
+		$users = \App\Model\User::get_all();
+		\Core\View::render_templeate('admin/user/list.html', ['users' => $users]);
 	}
-
-	protected function before(): bool
-	{
-        // TODO: Test if admin is logged
-		echo 'Before in admin';
-        return true;
-	}
-
-	protected function after(): void
-	{
-		echo 'After in admin';
-	}    
 }

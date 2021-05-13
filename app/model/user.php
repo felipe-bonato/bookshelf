@@ -277,7 +277,22 @@ class User extends \Core\Model
 				}
 			}
 		}
+	}
 
+	public static function get_all(): array
+	{
+		$conn = static::get_db_conection();
 		
+		if(!$stmt = $conn->prepare("SELECT `id`, `id_user_type`, `email`, `password`, `fullname`, `nickname`, `birthday`, `address`, `created_at`, `deleted_at` FROM `user`;")){
+			throw new \Exception("Could not prepare fetch user query");
+		}
+		
+		if(!$stmt->execute()){
+			throw new \Exception("Could not execute database query");
+		}
+		
+		if($res = $stmt->fetchAll(\PDO::FETCH_ASSOC)){ //TODO: THIS MIGHT NEED TO CHANGE
+			return $res;
+		}
 	}
 }
