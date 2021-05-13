@@ -48,8 +48,27 @@ abstract class Controller
 		if(!\App\Auth::get_user()){
 			\App\Auth::set_return_page();
 			\App\Flash::add_message("Please login before accessing the page", \App\Flash::INFO);
-			\App\redirect('/login');
+			\App\redirect('login');
 		}
+	}
+
+	protected function require_admin(){
+		$this->require_login();
+
+		$user = \App\Auth::get_user();
+		
+		if(!$user){
+			\App\Auth::set_return_page();
+			\App\Flash::add_message("You must be logged to access this page", \App\Flash::INFO);
+			\App\redirect('login');
+		}
+		
+		if($user->id_user_type != 2){ // id_user_type might be string
+			\App\Auth::set_return_page();
+			\App\Flash::add_message("You don't have the permission to access this page. Get out of here!", \App\Flash::ERROR);
+			\App\redirect('login');
+		}
+		
 	}
 
 }
