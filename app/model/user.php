@@ -157,4 +157,132 @@ class User extends \Core\Model
 
 		return $user;
 	}
+
+	public function modify(): bool
+	{
+		$this->validate_modify_data();
+
+		if(!empty($this->errors)){
+			return false;
+		}
+
+		$conn = static::get_db_conection();
+
+		$user = \App\Auth::get_user();
+
+		if(isset($this->password) && !empty($this->password)){
+			$sql = 'UPDATE user SET
+						email=:email,
+						password=:password,
+						fullname=:fullname,
+						nickname=:nickname,
+						birthday=:birthday,
+						address=:address
+					WHERE id=:id;';
+		} else {
+			$sql = 'UPDATE user SET
+						email=:email,
+						fullname=:fullname,
+						nickname=:nickname,
+						birthday=:birthday,
+						address=:address
+					WHERE id=:id;';
+		}
+		
+		if(!$stmt = $conn->prepare($sql)){
+			throw new \Exception('Could not prepare insertion statement');
+		}
+
+		$this->id = 
+		var_dump($this);
+
+		if(isset($this->password) && !empty($this->password)){
+			if(!$this->hashed_password = password_hash($this->password, PASSWORD_BCRYPT)){
+				$this->errors[] = 'Invalid password';
+				return false;
+			}
+			$query_arr = [
+				':email' => $this->email,
+				':password' => $this->hashed_password,
+				':fullname' => $this->fullname,
+				':nickname' => $this->nickname,
+				':birthday' => $this->birthday,
+				':address' => $this->address,
+				':id' => $user->id
+			];
+		} else {
+			$query_arr = [
+				':email' => $this->email,
+				':fullname' => $this->fullname,
+				':nickname' => $this->nickname,
+				':birthday' => $this->birthday,
+				':address' => $this->address,
+				':id' => $user->id
+			];
+		}
+		
+		if(!$stmt->execute($query_arr)){
+			return false;
+			//throw new \Exception('Could not insert user into database');
+		};
+
+		return true;
+	}
+
+	public function validate_modify_data(): void
+	{
+		if(!filter_var($this->email, FILTER_VALIDATE_EMAIL)){
+			$this->errors[] = 'Invalid email';
+		}
+
+		$user = \App\Auth::get_user();
+		if($this->email != $user->email){
+			if(static::email_exists($this->email)){
+				$this->errors[] = 'Email already registred';
+			}
+		}
+
+		if(isset($this->password) && !empty($this->password)){
+			if(strlen($this->password) < 8){
+				$this->errors[] = 'Password must have at least 8 charactes';
+			}
+
+			if(!preg_match('/.*[a-z]+.*/i', $this->password)) {
+				$this->errors[] = 'Password must have at least 1 letter';
+			}
+			
+			if(!preg_match('/.*\d+.*/i', $this->password)) {
+				$this->errors[] = 'Password must have at least 1 number';
+			}
+		}
+
+		if(strlen($this->fullname) == 0){
+			$this->errors[] = 'Name must be set';
+		}
+		
+		if(strlen($this->address) < 6){
+			$this->errors[] = 'Invalid Address';
+		}
+		
+		// Special Cases
+		
+		if(empty($this->nickname) == 0){
+			$fullname_arr = explode(' ', $this->fullname);
+			$this->nickname = $fullname_arr[0];
+		}
+
+		if(!$this->birthday = \DateTime::createFromFormat('Y-m-d', $this->birthday)){
+			$this->errors[] = 'Invalid birthday';
+		} else {
+			if(!$this->birthday = $this->birthday->format('Y-m-d')){
+				$this->errors[] = 'Invalid birthday';
+			} else {
+				if($this->birthday < '1900-01-01'){
+					$this->errors[] = 'I doubt that you were born before 1900';
+				}
+			}
+		}
+
+		
+	}
 }
