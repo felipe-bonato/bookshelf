@@ -1,0 +1,136 @@
+{% extends "base.html" %}
+
+{% block title %}Profile{% endblock %}
+
+{% block body %}
+	<h1>Profile page</h1>
+
+	{% if user.errors is not empty %}
+		<div>
+			<ul>
+				{% for error in user.errors %}	
+					<li>{{error}}</li>
+				{% endfor %}
+			</ul>
+		</div>
+	{% endif %}
+
+	<form method="POST" action="/profile/modify" id="profile-modify-form">
+		<fieldset>
+			<label>Email</label>
+			<input type="email" name="email" value={{user.email}} required>
+		</fieldset>
+		<fieldset> <!-- TODO: MAKE EYE THING-->
+			<label>Password</label>
+			<input type="password" name="password" id="password" autocomplete="off">
+			<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
+			<small>Leave empty if do not want to change</small>
+			<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
+		</fieldset>
+		<fieldset>
+			<label>Fullname</label>
+			<input type="text" name="fullname" value={{user.fullname}} required>
+		</fieldset>
+		<fieldset>
+			<label>Nickname</label>
+			<input type="text" name="nickname" value={{user.nickname}}>
+			<!--small>Optional; If not set we will call you by your first name.</small-->
+		</fieldset>
+		<fieldset>
+			<label>Birthday</label>
+			<input type="date" name="birthday" value={{user.birthday}} required>
+		</fieldset>
+		<fieldset>
+			<label>Address</label required>
+			<input type="text" value={{user.address}} name="address">
+		</fieldset>
+		<fieldset>
+			<button type="submit">
+				<span>Save!</span>
+			</button>
+		</fieldset>
+	</form>
+{% endblock %}
+
+{% block scripts %}
+	<script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.min.js" 
+			integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" 
+			crossorigin="anonymous"></script>
+	<script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.3/dist/jquery.validate.min.js"></script>
+	<script>
+		function toggle_password_visibility(){
+			let password = document.getElementById("password");
+			let vis = document.getElementById("password-visibility-img");
+			if(password.type === "password"){
+				password.type = "text";
+				vis.src = "/img/icon/visibility_off.svg";
+			} else {
+				password.type = "password"
+				vis.src = "/img/icon/visibility_on.svg";
+			}
+			return false;
+		}
+		
+		
+		$.validator.addMethod('passwordLetterAndNumber', function(value, element, param){
+				if(value != '') {
+					if(value.match(/.*[a-z]+.*/i) == null) {
+						return false;
+					}
+					if(value.match(/.*\d+.*/) == null) {
+						return false;
+					}
+				}
+				return true;
+			},
+			'Must have at least one letter and one number'
+		);
+
+		var password = $('#password');
+		var eye= $("#eye");
+		
+		eye.mousedown(function() {
+			password.attr("type", "text");
+		});
+			
+		eye.mouseup(function() {
+			password.attr("type", "password");
+		});
+		// para evitar o problema de arrastar a imagem e a senha continuar exposta
+		$( "#eye" ).mouseout(function() { 
+			password.attr("type", "password");
+		});
+
+		$(document).ready(function(){
+			$('#register-new-form').validate({
+				rules: {
+					email: {
+						required: true,
+						email: true
+					},
+					password: {
+						minlength: 8,
+						passwordLetterAndNumber: true
+					},
+					fullname: 'required',
+					birthday: {
+						required: true,
+						date: true
+					},
+					address: {
+						required: true,
+						minlength: 3
+					},
+					terms: 'required'
+				},
+				messages: {
+					fullname: 'Thats not a valid name',
+					email: {
+						required: 'Please, enter an email',
+						email: 'Invalid email format'
+					}
+				}
+			});
+		});
+	</script>
+{% endblock scripts %}
