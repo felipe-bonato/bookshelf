@@ -73,6 +73,7 @@ class Router
 
 	public function dispatch($url)
 	{
+		
 		if(!$this->match($url)) {
 			throw new \Exception('Route '.$url.' not found!');
 			return;
@@ -85,8 +86,6 @@ class Router
 			return;
 		}
 		
-		$controller_object = new $controller();
-
 		$action = $this->to_snake_case($this->remove_hyphens($this->params['action']));
 		
 		/*if(!is_callable([$controller_object, $action])){
@@ -97,7 +96,11 @@ class Router
 		if(preg_match('/action$/i', $action) !== 0){
 			throw new \Exception('Method '.$action.' of controller '.$controller.' cannot be accessed');
 		}
-
+		
+		$controller_object = new $controller();
+		if(isset($this->params['id'])){
+			$controller_object->$action(intval($this->params['id']));
+		}
 		$controller_object->$action();
 	}
 

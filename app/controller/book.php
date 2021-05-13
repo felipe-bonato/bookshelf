@@ -32,6 +32,22 @@ class Book extends \Core\Controller
 		\App\redirect('book/success');
 	}
 
+	public function view_action(int $id): void
+	{
+		$book = \App\Model\Book::get_book_by_id($id);
+		
+		if(empty($book)){
+			throw new \Exception('Book does not exist');
+			return;
+		}
+
+		\Core\View::render_templeate('book/view.html', [
+			'book' => $book
+		]);
+	}
+
+
+
 	public function success_action(): void
 	{
 		\Core\View::render_templeate('book/success.html');

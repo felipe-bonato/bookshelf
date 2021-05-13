@@ -35,9 +35,15 @@ $router->add('admin/menu',[
 	'action' => 'menu'
 ]);
 
+$router->add('book/{id:\d+}',[
+	'controller' => 'Book',
+	'action' => 'view'
+]);
+
 $router->add('{controller}/{action}');
-$router->add('{controller}/{id:\d+}/{action}');
-$router->add('admin/{controller}/{action}', ['namespace' => 'admin']);
+//$router->add('{controller}/{id:\d+}/{action}');
+$router->add('admin/{controller}/{action}', ['namespace' => 'Admin']);
+$router->add('admin/{controller}/{id:\d+}/{action}', ['namespace' => 'Admin']);
 
 $router->dispatch($_SERVER['QUERY_STRING']);
 ?>
