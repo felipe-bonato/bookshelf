@@ -1,0 +1,59 @@
+{% extends "base.html" %}
+
+{% block title %}Users{% endblock %}
+
+{% block body %}
+	<h1>Users</h1>
+	<table>
+		<tr>
+			<th>id</th>
+			<th>id_user_type</th>
+			<th>email</th>
+			<th>password</th>
+			<th>fullname</th>
+			<th>nickname</th>
+			<th>birthday</th>
+			<th>address</th>
+			<th>created_at</th>
+			<th>deleted_at</th>
+		</tr>
+		{% for user in users %}
+			<tr>
+				<td>{{ user.id }}</td>
+				<td>{{ user.id_user_type }}</td>
+				<td>{{ user.email }}</td>
+				<td>{{ user.password }}</td>
+				<td>{{ user.fullname }}</td>
+				<td>{{ user.nickname }}</td>
+				<td>{{ user.birthday }}</td>
+				<td>{{ user.address }}</td>
+				<td>{{ user.created_at }}</td>
+				<td>{{ user.deleted_at }}</td>
+			</tr>
+		{% endfor %}
+	</table>
+<!--
+	<p>Table with colgroup</p>
+<table>
+  <colgroup span="4" class="columns"></colgroup>
+  <tr>
+    <th>Countries</th>
+    <th>Capitals</th>
+    <th>Population</th>
+    <th>Language</th>
+  </tr>
+  <tr>
+    <td>USA</td>
+    <td>Washington D.C.</td>
+    <td>309 million</td>
+    <td>English</td>
+  </tr>
+  <tr>
+    <td>Sweden</td>
+    <td>Stockholm</td>
+    <td>9 million</td>
+    <td>Swedish</td>
+  </tr>
+</table>
+-->
+{% endblock %}
