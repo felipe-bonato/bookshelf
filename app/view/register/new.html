@@ -18,7 +18,7 @@
 	<form method="POST" action="/insert" id="register-new-form">
 		<fieldset>
 			<label>Email</label>
-			<input type="email" name="email" required>
+			<input type="email" name="email" value="{{ user.email }}" required>
 		</fieldset>
 		<fieldset> <!-- TODO: MAKE EYE THING-->
 			<label>Password</label>
@@ -28,20 +28,20 @@
 		</fieldset>
 		<fieldset>
 			<label>Fullname</label>
-			<input type="text" name="fullname" required>
+			<input type="text" name="fullname" value="{{ user.fullname }}" required>
 		</fieldset>
 		<fieldset>
 			<label>Nickname</label>
-			<input type="text" name="nickname">
+			<input type="text" name="nickname" value="{{ user.nickname }}">
 			<!--small>Optional; If not set we will call you by your first name.</small-->
 		</fieldset>
 		<fieldset>
 			<label>Birthday</label>
-			<input type="date" name="birthday" required>
+			<input type="date" name="birthday" value="{{ user.birthday }}" required>
 		</fieldset>
 		<fieldset>
 			<label>Address</label required>
-			<input type="text" name="address">
+			<input type="text" value="{{ user.address }}" name="address">
 		</fieldset>
 		<fieldset>
 			<input type="checkbox" name="terms" required>
