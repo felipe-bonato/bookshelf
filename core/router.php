@@ -83,7 +83,6 @@ class Router
 
 		if(!class_exists($controller)) {
 			throw new \Exception('Controller class '.$controller.' not found!');
-			return;
 		}
 		
 		$action = $this->to_snake_case($this->remove_hyphens($this->params['action']));
@@ -100,7 +99,9 @@ class Router
 		$controller_object = new $controller();
 		if(isset($this->params['id'])){
 			$controller_object->$action(intval($this->params['id']));
+			return;
 		}
+			
 		$controller_object->$action();
 	}
 
