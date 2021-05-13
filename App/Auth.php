@@ -26,7 +26,7 @@ class Auth
 	public static function get_user()
 	{
 		if(isset($_SESSION['user_id'])){
-			return Model\User::get_user_by_id($_SESSION['user_id']); //? Maybe change this to email?
+			return \App\Model\User::get_user_by_id($_SESSION['user_id']); //? Maybe change this to email?
 		}
 	}
 

@@ -17,7 +17,7 @@ class Register extends \Core\Controller
 			]);
 			return;
 		}
-		\Core\redirect('register/success');
+		\App\redirect('register/success');
 	}
 
 	public function success_action(): void

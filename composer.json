@@ -2,7 +2,7 @@
 	"name": "felipebonato/bookshelf",
 	"description": "Bookshelf requirements",
     "autoload": {
-        "files": ["Core/Util.php"],
+        "files": ["App/Util.php"],
         "psr-4": {
             "Core\\": "Core/",
             "App\\": "App/"
