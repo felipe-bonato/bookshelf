@@ -2,6 +2,11 @@
 
 class User extends \Core\Controller
 {
+	protected function before(): void
+	{
+		$this->require_admin();
+	}
+
 	public function list_action(): void
 	{
 		$users = \App\Model\User::get_all();
