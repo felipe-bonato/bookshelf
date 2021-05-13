@@ -98,8 +98,6 @@ class User extends \Core\Model
 				}
 			}
 		}
-
-		
 	}
 
 	public static function email_exists(string $email): bool
@@ -188,7 +186,9 @@ class User extends \Core\Model
 						address=:address
 					WHERE id=:id;';
 		}
-		
+
+		var_dump($sql);
+
 		if(!$stmt = $conn->prepare($sql)){
 			throw new \Exception('Could not prepare insertion statement');
 		}
@@ -221,12 +221,7 @@ class User extends \Core\Model
 			];
 		}
 		
-		if(!$stmt->execute($query_arr)){
-			return false;
-			//throw new \Exception('Could not insert user into database');
-		};
-
-		return true;
+		return $stmt->execute($query_arr);
 	}
 
 	public function validate_modify_data(): void

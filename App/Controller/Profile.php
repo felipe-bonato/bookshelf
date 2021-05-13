@@ -19,8 +19,9 @@ class Profile extends \Core\Controller
 
 		if($user->modify()){
 			\App\Flash::add_message('Your profile was modified successfully!', \App\Flash::SUCCESS);
-			\Core\redirect('/profile/index');
+			\App\redirect('profile/index');
 		} else {
+			\App\Flash::add_message('Could not modify your profile!', \App\Flash::WARNING);
 			\Core\View::render_templeate('profile/index.html', [
 				'user' => $user
 			]);	

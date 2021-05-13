@@ -50,14 +50,13 @@ class Error
 		$error_msg = '
 		<div id="error">
 			<h1>Fatal Error</h1>
-			<p>Exception <i>"'.get_class($exception).'"</i> was not found</p>
+			<p>Exception <i>"'.get_class($exception).'"</i> was raised</p>
 			<p>Message: <i>'.$exception->getMessage().'</i></p>
 			<p>Stack Trace: <pre>'.$exception->getTraceAsString().'</pre></p>
 			<p>Thrown from <b>'.$exception->getFile().'</b> at line <b>'.$exception->getLine().'</b></p>
 		</div>';
 		
-		//require_once 'Util.php';
-		$config = load_config();
+		$config = \App\load_config();
 		if($config['php']['show_errors']){
 			echo $error_msg;
 		} else {

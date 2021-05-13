@@ -22,7 +22,7 @@ class Access extends \Core\Controller
 
 			\App\Flash::add_message('You are now logged in!', \App\Flash::SUCCESS);
 
-			\Core\redirect(\App\Auth::get_return_page());
+			\App\redirect(\App\Auth::get_return_page());
 			exit;
 		} else { //TODO: WHEN USER CANNOT LOGIN HE IS REDIRECTED TO ACCESS/VALIDE
 			\App\Flash::add_message('Could not login; your email and/or password may be wrong!', \App\Flash::WARNING);
@@ -37,12 +37,12 @@ class Access extends \Core\Controller
 	{
 		\App\Auth::logout();
 		
-		\Core\redirect('/access/show-logout-message');
+		\App\redirect('/access/show-logout-message');
 	}
 
 	public function show_logout_message(): void
 	{
 		\App\Flash::add_message('You are logged out!', \App\Flash::SUCCESS);
-		\Core\redirect('');
+		\App\redirect('');
 	}
 }

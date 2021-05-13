@@ -8,7 +8,7 @@ abstract class Model
 	 * @param array $path Path to the config.json file
 	 * @return PDO A connection to the database
 	 */
-	protected static function get_db_conection(string $path='config.json'): \PDO
+	protected static function get_db_conection(string $path='../App/config.json'): \PDO
 	{
 		static $conn = null;
 
