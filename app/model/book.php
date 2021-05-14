@@ -65,7 +65,7 @@ class Book extends \Core\Model
 		
 		if(!$stmt->execute([ // return true if was able to do it
 			':id_owner' => $this->id_owner,
-			':id_author' => $this->author,
+			':author' => $this->author,
 			':id_genre' => $this->id_genre,
 			':name' => $this->name,
 			':isbn' => $this->isbn,
@@ -129,6 +129,30 @@ class Book extends \Core\Model
 			':isbn' => $this->isbn,
 			':price' => $this->price,
 			':last_modified_at' => $cur_datetime,
+			':id' => $this->id
+		]);
+	}
+
+	public function delete()
+	{
+		//$this->validate_modify_data(); //TODO: ADD THIS BACK <-------------------------------------------------
+
+		if(!empty($this->errors)){
+			return false;
+		}
+
+		$conn = static::get_db_conection();
+
+		$sql = 'UPDATE book SET deleted_at=:deleted_at WHERE id=:id;';
+		
+		if(!$stmt = $conn->prepare($sql)){
+			throw new \Exception('Could not prepare book update statement');
+		}
+
+		$cur_datetime = date('Y-m-d H:i:s');
+		
+		return $stmt->execute([
+			':deleted_at' => $cur_datetime,
 			':id' => $this->id
 		]);
 	}

@@ -74,6 +74,15 @@ class Book extends \Core\Controller
 		}
 	}
 
+	public function delete_action(int $id): void
+	{
+		$book = \App\Model\Book::get_book_by_id($id);
+		
+		$book->delete();
+
+		\App\Flash::add_message('Your book was deleted successfully!', \App\Flash::SUCCESS);
+		\App\redirect('');
+	}
 
 	public function success_action(): void
 	{
