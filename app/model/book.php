@@ -96,4 +96,40 @@ class Book extends \Core\Model
 		
 		return $stmt->fetch() ?? [];
 	}
+
+	public function modify(): bool
+	{
+		//$this->validate_modify_data(); //TODO: ADD THIS BACK <-------------------------------------------------
+
+		if(!empty($this->errors)){
+			return false;
+		}
+
+		$conn = static::get_db_conection();
+
+		$sql = 'UPDATE book SET
+				name=:name,
+				author=:author,
+				id_genre=:id_genre,
+				isbn=:isbn,
+				price=:price,
+				last_modified_at=:last_modified_at
+			WHERE id=:id AND book.deleted_at IS NULL;';
+		
+		if(!$stmt = $conn->prepare($sql)){
+			throw new \Exception('Could not prepare book update statement');
+		}
+
+		$cur_datetime = date('Y-m-d H:i:s');
+		
+		return $stmt->execute([
+			':name' => $this->name,
+			':author' => $this->author,
+			':id_genre' => $this->id_genre,
+			':isbn' => $this->isbn,
+			':price' => $this->price,
+			':last_modified_at' => $cur_datetime,
+			':id' => $this->id
+		]);
+	}
 }
