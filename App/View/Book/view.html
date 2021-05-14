@@ -4,6 +4,9 @@
 
 {% block body %}
 	<h1>{{ book.name }}</h1>
+	{% if book.id_owner == user.id %}
+		<a href="/book/{{ book.id }}/edit">Edit this book</a>
+	{% endif %}
 
 	<ul>
 		<li>
@@ -12,7 +15,7 @@
 		</li>
 		<li>
 			<label>Author</label>
-			<span>{{ book.id_author }}</span>
+			<span>{{ book.author }}</span>
 		</li>
 		<li>
 			<label>Genre</label>
