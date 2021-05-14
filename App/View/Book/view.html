@@ -6,6 +6,7 @@
 	<h1>{{ book.name }}</h1>
 	{% if book.id_owner == user.id %}
 		<a href="/book/{{ book.id }}/edit">Edit this book</a>
+		<a href="/book/{{ book.id }}/delete" style="color: red;">Delete this book</a>
 	{% endif %}
 
 	<ul>
