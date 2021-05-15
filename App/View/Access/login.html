@@ -7,7 +7,7 @@
 {% block body %}
 	<main class="s-main-con">
 		<h1 class="s-tittle">Login</h1>
-		<form method="POST" action="/access/validate" id="access-login-form">
+		<form method="POST" action="/access/validate" id="access-login-form" class="s-form">
 			<fieldset class="s-fieldset">
 				<label>Email</label>
 				<input type="email" name="email" {% if user.email %} value="{{ user.email }}" {% endif %} required>
@@ -16,7 +16,10 @@
 				<label>Password</label>
 				<div>
 					<input type="password" name="password" id="password" required>
-					<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
+						<button type="button" onclick="toggle_password_visibility()">
+							<img id="password-visibility-img" src="/img/icon/visibility_off.svg">
+						</button>
+					</input>
 				</div>
 				<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
 			</fieldset>

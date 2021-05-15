@@ -2,7 +2,7 @@
 	display: grid;
 	grid-template-columns: repeat(2, auto);
 	justify-items: stretch;
-	gap: 16px;
+	gap: 8px;
 
 	width: var(--width-con-mobile);
 	margin: 16px auto;
