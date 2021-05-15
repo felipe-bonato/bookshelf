@@ -1,0 +1,35 @@
+#nav-con {
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+
+	padding: 0 clamp(25px, 10%, 1024px);
+	
+	background-color: var(--primary-light);
+	box-shadow: 0 .5rem .75rem -.25rem var(--shadow-light);
+}
+
+.nav-item {
+	padding: .1rem .75rem;
+	
+	font: bold 1rem var(--font-main);
+	color: var(--text-dark);
+	text-decoration: none;
+	
+	border-radius: 16px;
+	background: transparent;
+}
+
+#nav-con a {
+	transition: transform calc(var(--transition-time) * 2) cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+#nav-con a:hover {
+	transform: translateY(.5em);
+
+	color: var(--text-light);
+
+	background: var(--primary-dark);
+	
+	box-shadow: .25em .25em .5em var(--shadow);
+}
