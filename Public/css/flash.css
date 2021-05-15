@@ -1,0 +1,28 @@
+#flash-con {
+	width: 100%;
+
+	margin: 8px 0;
+
+	text-align: center;
+}
+
+#flash-con h3 {
+	padding: 8px;
+}
+
+.flash-info {
+	background-color: var(--info);
+}
+
+.flash-success {
+	background-color: var(--success);
+}
+
+.flash-warning {
+	background-color: var(--warning);
+}
+
+.flash-error {
+	background-color: var(--error);
+}
+

@@ -11,6 +11,10 @@
 	--primary-dark: #50AADD;
 	--primary-light: #8FD4EF;
 	--background: #EAF5FB;
+
+	--info: #00f;
+	--success: #0f0;
+	--warning: #ff0;
 	--error: #f33a1a;
 
 	--text-dark: #000b11;
