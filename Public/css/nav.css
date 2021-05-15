@@ -18,18 +18,16 @@
 	
 	border-radius: 16px;
 	background: transparent;
-}
 
-#nav-con a {
 	transition: transform calc(var(--transition-time) * 2) cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-#nav-con a:hover {
-	transform: translateY(.5em);
+.nav-item:hover {
+	transform: translateY(6px);
 
 	color: var(--text-light);
 
 	background: var(--primary-dark);
 	
-	box-shadow: .25em .25em .5em var(--shadow);
+	box-shadow: var(--shadow-small);
 }

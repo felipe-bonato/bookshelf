@@ -8,19 +8,20 @@
 	margin: 16px auto;
 }
 
-#home-index-book-con a {
+.home-index-book img {
+	display: block; /* This is nedded so the image doesn't have a space in the bottom*/
+	
+	width: 100%;
+	height: 100%;
+	border-radius: var(--rounding);
+}
+
+.home-index-book img {
 	transition: transform calc(var(--transition-time) / 3) linear;
 }
 
-#home-index-book-con a:hover {
-    transform: scale(1.0625); /* 1 / 32 */
+.home-index-book:hover img {
+	transform: scale(1.0625); /* 1 / 32 */
     
-    border-radius: 15px;
-    box-shadow: 0px 0px 16px 5px var(--shadow);
-}
-
-.home-index-book {
-	display: block; /* This is nedded so the image doesn't have a space in the bottom*/
-
-	width: 100%;
+    box-shadow: var(--shadow-large);
 }
