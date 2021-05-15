@@ -7,17 +7,18 @@
 {% block body %}
 	<main id="home-index-book-con">
 		{% for book in books %}
-			<a href="/book/{{ book.id }}/view"> <!-- TRY TO FIX THIS SIZING -->
-				<img
-					loading="lazy"
-					decoding="async"
-					src="/img/users_upload/books_cover/{{ book.id }}"
-					alt="{{ book.name }}"
-					height="240"
-					width="160"
-					class="home-index-book"
-				>
-			</a>
+			<div class="home-index-book">
+				<a href="/book/{{ book.id }}/view">
+					<img
+						loading="lazy"
+						decoding="async"
+						src="/img/users_upload/books_cover/{{ book.id }}"
+						alt="{{ book.name }}"
+						height="auto"
+						width="auto"
+					>
+				</a>
+			</div>
 		{% endfor %}
 	</main>
 {% endblock %}

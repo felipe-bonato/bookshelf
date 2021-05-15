@@ -1,9 +1,9 @@
 /* ==> ORDER <==
  *  1. layout
  *  2. box model
- *  3. animations
- *  4. fonts
- *  5. aparence
+ *  3. fonts
+ *  4. aparence
+ *  5. animations
  */
 
 :root {
@@ -26,6 +26,9 @@
 
 	--margin-con: 100px;
 
+	/* STANDARD SHADOWS */
+	--shadow-small: 2px 2px 4px 0px var(--shadow-light);
+	--shadow-large: 2px 2px 8px 2px var(--shadow);
 
 	--container-lr-padding: 15%;
 	--margin-itens: 3rem;
