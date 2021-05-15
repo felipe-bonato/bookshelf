@@ -2,6 +2,11 @@
 
 class Book extends \Core\Controller
 {
+	protected function before(): void
+	{
+		$this->require_admin();
+	}
+
 	public function list_action(): void
 	{
 		$books = \App\Model\Book::get_all();
