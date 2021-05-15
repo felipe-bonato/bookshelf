@@ -1,37 +1,30 @@
 {% extends "base.html" %}
 
+{% block styles %}<link rel="stylesheet" href="/css/access/login.css">{% endblock %}
+
 {% block title %}Login{% endblock %}
 
 {% block body %}
-	<h1>Login page</h1>
-
-	{% if user.errors is not empty %}
-		<div>
-			<ul>
-				{% for error in user.errors %}	
-					<li>{{error}}</li>
-				{% endfor %}
-			</ul>
-		</div>
-	{% endif %}
-
-	<form method="POST" action="/access/validate" id="register-new-form">
-		<fieldset>
-			<label>Email</label>
-			<input type="email" name="email" value="{{ user.email }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Password</label>
-			<input type="password" name="password" id="password" required>
-			<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
-			<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
-		</fieldset>
-		<fieldset>
-			<button type="submit">
-				<span>Login!</span>
-			</button>
-		</fieldset>
-	</form>
+	<main class="s-main-con">
+		<h1 class="s-tittle">Login</h1>
+		<form method="POST" action="/access/validate" id="access-login-form">
+			<fieldset class="s-fieldset">
+				<label>Email</label>
+				<input type="email" name="email" {% if user.email %} value="{{ user.email }}" {% endif %} required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Password</label>
+				<div>
+					<input type="password" name="password" id="password" required>
+					<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
+				</div>
+				<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
+			</fieldset>
+			<fieldset class="s-button">
+				<button type="submit">Login!</button>
+			</fieldset>
+		</form>
+	</main>
 {% endblock %}
 
 {% block scripts %}

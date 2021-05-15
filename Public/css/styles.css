@@ -26,6 +26,8 @@
 
 	--margin-con: 100px;
 
+	--padding-con: 16px;
+
 	/* STANDARD SHADOWS */
 	--shadow-small: 2px 2px 4px 0px var(--shadow-light);
 	--shadow-large: 2px 2px 8px 2px var(--shadow);
@@ -42,12 +44,10 @@
 	/* FONTS */
 	--font-main: 'Proza Libre', sans-serif;
 
-
 	/* DEFAULTS */
 	font-family: 'Proza Libre', Helvetica, sans-serif;
 	background-color: var(--background);
 	color: var(--text-dark);
-
 }
 
 * {
@@ -71,33 +71,75 @@ body::-webkit-scrollbar-thumb {
 	box-shadow: 0 0 1rem var(--shadow);
 }*/
 
-.button-send {
-	font-family: 'Proza Libre', sans-serif;
-	font-size: 1.25rem;
-	font-weight: 800;
-
-	border-radius: var(--rounding);
-
-	color: var(--text-dark);
-	background-color: var(--primary-dark);
-	
+.s-button button {
 	height: 3rem;
 	width: 100%;
-
-	box-shadow: .125em .125em .5em var(--shadow-light);
-
 	padding: var(--padding-itens) 0 var(--padding-itens) 0;
+	
+	font: bold 1.25rem var(--font-main);
+	color: var(--text-dark);
 
+	border-radius: var(--rounding);
+	background-color: var(--primary-dark);
+	
+	box-shadow: .125em .125em .5em var(--shadow-light);
+	
 	transition: transform calc(var(--transition-time) / 3) linear;
 }
 
-.button-send:hover {
+.s-button:hover {
 	transform: scale(1.0625);
 	cursor: pointer;
 	box-shadow: .25em .25em .25em var(--shadow);
 }
 
-.button-send:hover span {
+.s-button:hover span {
 	color: var(--text-light);
 	text-shadow: .15em .15em .25em var(--shadow);
+}
+
+.s-fieldset {
+	display: flex;
+	flex-direction: column;
+}
+
+.s-fieldset label {
+	font-size: 1rem;
+}
+
+.s-fieldset input {
+	border-radius: var(--rounding);
+	
+	height: 3em;
+	padding-left: 1em;
+
+	font: bold 1rem var(--font-main);
+	color: var(--text-dark);
+
+	background-color: var(--background);
+}
+
+.s-fieldset img {
+	display: block;
+
+	height: 2em;
+}
+
+.s-main-con {
+	width: var(--width-con-mobile);
+
+	margin: 32px auto auto auto;
+	padding: var(--padding-con);
+
+	background-color: var(--primary-light);
+	border-radius: var(--rounding);
+}
+
+.s-tittle {
+	margin-bottom: 32px;
+
+	font: bold 2rem var(--font-main);
+
+	text-align: center;
+	line-height: 1em;
 }
