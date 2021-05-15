@@ -1,0 +1,100 @@
+/* ==> ORDER <==
+ *  1. layout
+ *  2. box model
+ *  3. animations
+ *  4. fonts
+ *  5. aparence
+ */
+
+:root {
+	/* COLORS */
+	--primary-dark: #50AADD;
+	--primary-light: #8FD4EF;
+	--background: #EAF5FB;
+	--error: #f33a1a;
+
+	--text-dark: #000b11;
+	--text-light: #fefeff;
+
+	--shadow: rgba(0,0,0,.3);
+	--shadow-light: rgba(0,0,0,.15);
+
+	/* STANDARD SIZES */
+	--width-con-small: clamp(200px, 15%, 1000px);
+	--width-con-large: clamp(360px, 85%, 900px);
+	--width-con-mobile: clamp(320px, 95%, 1024px);
+
+	--margin-con: 100px;
+
+
+	--container-lr-padding: 15%;
+	--margin-itens: 3rem;
+	--transition-time: 250ms;
+
+	--rounding: 15px;
+	
+	--margin: 15px;
+	--pading: 15px;
+
+	/* FONTS */
+	--font-main: 'Proza Libre', sans-serif;
+
+
+	/* DEFAULTS */
+	font-family: 'Proza Libre', Helvetica, sans-serif;
+	background-color: var(--background);
+	color: var(--text-dark);
+
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	box-sizing: border-box;
+}
+
+/*
+body::-webkit-scrollbar {
+	width: 1rem;
+}
+body::-webkit-scrollbar-track {
+	background-color: var(--background);
+}
+body::-webkit-scrollbar-thumb {
+	background-color: var(--primary-light);
+	border-radius: 1rem;
+	box-shadow: 0 0 1rem var(--shadow);
+}*/
+
+.button-send {
+	font-family: 'Proza Libre', sans-serif;
+	font-size: 1.25rem;
+	font-weight: 800;
+
+	border-radius: var(--rounding);
+
+	color: var(--text-dark);
+	background-color: var(--primary-dark);
+	
+	height: 3rem;
+	width: 100%;
+
+	box-shadow: .125em .125em .5em var(--shadow-light);
+
+	padding: var(--padding-itens) 0 var(--padding-itens) 0;
+
+	transition: transform calc(var(--transition-time) / 3) linear;
+}
+
+.button-send:hover {
+	transform: scale(1.0625);
+	cursor: pointer;
+	box-shadow: .25em .25em .25em var(--shadow);
+}
+
+.button-send:hover span {
+	color: var(--text-light);
+	text-shadow: .15em .15em .25em var(--shadow);
+}

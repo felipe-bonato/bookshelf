@@ -1,13 +1,23 @@
 {% extends "base.html" %}
 
+{% block styles %}<link rel="stylesheet" href="/css/home/index.css">{% endblock %}
+
 {% block title %}Home{% endblock %}
 
 {% block body %}
-	<h1>Hello from inside home's view, {% if user %}{{ user.nickname }}{% else %}stranger{% endif %}!</h1>
-	<h2>Programming Languages:</h2>
-	<ul>
-		{% for lang in languages %}
-			<li>{{ lang }}</li>
+	<main id="home-index-book-con">
+		{% for book in books %}
+			<a href="/book/{{ book.id }}/view"> <!-- TRY TO FIX THIS SIZING -->
+				<img
+					loading="lazy"
+					decoding="async"
+					src="/img/users_upload/books_cover/{{ book.id }}"
+					alt="{{ book.name }}"
+					height="240"
+					width="160"
+					class="home-index-book"
+				>
+			</a>
 		{% endfor %}
-	</ul>
+	</main>
 {% endblock %}

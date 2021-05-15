@@ -7,9 +7,9 @@ class Home extends \Core\Controller
 {
 	public function index_action(): void
 	{
+		$books = \App\Model\Book::get_all();
 		\Core\View::render_templeate('home/index.html', [
-			'name' => 'Felipe',
-			'languages' => ['C', 'Python', 'PHP']
+			'books' => $books
 		]);
 	}
 }
