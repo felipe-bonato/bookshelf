@@ -42,7 +42,7 @@ class Access extends \Core\Controller
 
 	public function show_logout_message(): void
 	{
-		\App\Flash::add_message('You are logged out!', \App\Flash::SUCCESS);
+		\App\Flash::add_message('You are now logged out!', \App\Flash::SUCCESS);
 		\App\redirect('');
 	}
 }
