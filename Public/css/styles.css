@@ -105,6 +105,7 @@ body::-webkit-scrollbar-thumb {
 .s-fieldset {
 	display: flex;
 	flex-direction: column;
+	align-items: stretch;
 }
 
 .s-fieldset label {
@@ -115,6 +116,7 @@ body::-webkit-scrollbar-thumb {
 	border-radius: var(--rounding);
 	
 	height: 3em;
+	width: 100%;
 	padding-left: 1em;
 
 	font: bold 1rem var(--font-main);
@@ -123,11 +125,30 @@ body::-webkit-scrollbar-thumb {
 	background-color: var(--background);
 }
 
+.s-fieldset div {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: nowrap;
+	align-content: center;
+	justify-content: space-between;
+	align-items: center;
+}
+
 .s-fieldset img {
 	display: block;
 
-	height: 2em;
+	margin: 4px;
 }
+
+.s-fieldset button {
+	right: 0;
+	background-color: transparent;
+}
+/*
+.s-fieldset button {
+	height: 100%;
+}
+*/
 
 .s-main-con {
 	width: var(--width-con-mobile);
@@ -146,4 +167,10 @@ body::-webkit-scrollbar-thumb {
 
 	text-align: center;
 	line-height: 1em;
+}
+
+.s-form {
+	display: grid;
+	grid-template-columns: auto;
+	gap: 32px;
 }
