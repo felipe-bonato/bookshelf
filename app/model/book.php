@@ -42,7 +42,8 @@ class Book extends \Core\Model
 	public function insert(): bool
 	{
 		$this->id_owner = $_SESSION['user_id'];
-		//$this->validate_register_data();
+		
+		$this->validate_book_data();
 
 		if(!empty($this->errors)){
 			return false;
@@ -77,6 +78,25 @@ class Book extends \Core\Model
 		move_uploaded_file($_FILES['cover_image']['tmp_name'], 'C:/wamp64/www/bookshelf/Public/img/users_upload/books_cover/'.$conn->lastInsertId().'.jpg');
 
 		return true;
+	}
+
+	public function validate_book_data(): void
+	{
+		if(!isset($this->cover_image)){
+			$this->errors[] = 'Invalid image';
+		}
+
+		if(strlen($this->name) < 1){
+			$this->errors[] = 'Invalid name';
+		}
+
+		if(strlen($this->id_genre) > 12){
+			$this->errors[] = 'Invalid name';
+		}
+
+		if(!is_numeric($this->price) || $this->price < .1){
+			$this->errors[] = 'Invalid price';
+		}
 	}
 
 	public static function get_book_by_id(int $id)
