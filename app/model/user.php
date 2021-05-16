@@ -33,7 +33,7 @@ class User extends \Core\Model
 				'INSERT INTO user
 				(id, id_user_type, email, password, fullname, nickname, birthday, address, created_at, last_modified_at, deleted_at)
 				VALUES
-				(NULL, 1, :email, :password, :fullname, :nickname, :birthday, :address, '.$cur_datetime.', '.$cur_datetime.', NULL);')
+				(NULL, 1, :email, :password, :fullname, :nickname, :birthday, :address, \''.$cur_datetime.'\', \''.$cur_datetime.'\', NULL);')
 			){
 			throw new \Exception('Could not prepare insertion statement');
 		}

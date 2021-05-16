@@ -13,14 +13,14 @@ class Book extends \Core\Model
 	{
 		$conn = static::get_db_conection();
 			
-		if(!$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, cover_image, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.deleted_at IS NULL')){
+		if(!$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.deleted_at IS NULL')){
 			throw new \Exception('Could not prepare fetch book name by book id statement');
 		}
 		
 		if(!$stmt->execute()){
 			throw new \Exception('Could not execute database query');
 		}
-		
+
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
 	}
 
@@ -28,7 +28,7 @@ class Book extends \Core\Model
 	{
 		$conn = static::get_db_conection();
 			
-		if(!$stmt = $conn->prepare("SELECT id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image FROM book WHERE book.deleted_at IS NOT NULL;")){
+		if(!$stmt = $conn->prepare("SELECT id, id_owner, id_buyer, id_genre, name, author, isbn, price FROM book WHERE book.deleted_at IS NOT NULL;")){
 			throw new \Exception("Could not prepare fetch book name by book id statement");
 		}
 		
@@ -50,13 +50,11 @@ class Book extends \Core\Model
 
 		$conn = static::get_db_conection();
 
-		
-
 		if(!$stmt = $conn->prepare(
 				'INSERT INTO book
-				(id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image, created_at, last_modified_at, deleted_at)
+				(id, id_owner, id_buyer, id_genre, name, author, isbn, price, created_at, last_modified_at, deleted_at)
 				VALUES
-				(NULL, :id_owner, NULL, :id_genre, :name, :author, :isbn, :price, :cover_image, :created_at, :last_modified_at, NULL);')
+				(NULL, :id_owner, NULL, :id_genre, :name, :author, :isbn, :price, :created_at, :last_modified_at, NULL);')
 			){
 			throw new \Exception('Could not prepare insertion statement');
 		}
@@ -70,12 +68,13 @@ class Book extends \Core\Model
 			':name' => $this->name,
 			':isbn' => $this->isbn,
 			':price' => $this->price,
-			':cover_image' => 'placeholder.png',
 			':created_at' => $cur_time,
 			':last_modified_at' => $cur_time
 		])){
 			throw new \Exception('Could not insert user into database');
 		};
+
+		move_uploaded_file($_FILES['cover_image']['tmp_name'], 'C:/wamp64/www/bookshelf/Public/img/users_upload/books_cover/'.$conn->lastInsertId().'.jpg');
 
 		return true;
 	}
@@ -83,7 +82,7 @@ class Book extends \Core\Model
 	public static function get_book_by_id(int $id)
 	{
 		$conn = static::get_db_conection();
-		$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, cover_image, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.id = :id AND book.deleted_at IS NULL');
+		$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.id = :id AND book.deleted_at IS NULL');
 		
 		
 		if($stmt === 0){
@@ -155,5 +154,20 @@ class Book extends \Core\Model
 			':deleted_at' => $cur_datetime,
 			':id' => $this->id
 		]);
+	}
+
+	public static function get_all_genres(): array
+	{
+		$conn = static::get_db_conection();
+			
+		if(!$stmt = $conn->prepare('SELECT book_genre.id AS id, book_genre.name AS name FROM book_genre')){
+			throw new \Exception('Could not prepare fetch book genre statement');
+		}
+		
+		if(!$stmt->execute()){
+			throw new \Exception('Could not execute database query');
+		}
+		
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
 	}
 }
