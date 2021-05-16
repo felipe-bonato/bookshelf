@@ -1,38 +1,47 @@
 {% extends "base.html" %}
 
+
+{% block styles %}
+	<link rel="stylesheet" href="/css/book/view.css">
+{% endblock %}
+
 {% block title %}{{ book.name }}{% endblock %}
 
 {% block body %}
-	<h1>{{ book.name }}</h1>
-	{% if book.id_owner == user.id %}
-		<a href="/book/{{ book.id }}/edit">Edit this book</a>
-		<a href="/book/{{ book.id }}/delete" style="color: red;">Delete this book</a>
-	{% endif %}
-
-	<ul>
-		<li>
-			<label>Name</label>
-			<span>{{ book.name }}</span>
-		</li>
-		<li>
-			<label>Author</label>
-			<span>{{ book.author }}</span>
-		</li>
-		<li>
-			<label>Genre</label>
-			<span>{{ book.id_genre }}</span>
-		</li>
-		<li>
-			<label>ISBN</label>
-			<span>{{ book.isbn }}</span>
-		</li>
-		<li>
-			<label>Price</label>
-			<span>{{ book.price }}</span>
-		</li>
-		<li>
-			<label>Cover Image</label>
-			<span>{{ book.cover_image }}</span>
-		</li>
-	</ul>
+	<main class="s-main-con">
+		<h1 class="s-tittle">{{ book.name }}</h1>
+		<img
+			src="/img/users_upload/books_cover/{{ book.id }}"
+			alt="{{ book.name }}"
+			height="auto"
+			width="100%"
+			class="book-view-cover-image"
+		>
+		<ul class="book-view-info-con">
+			<li>
+				<label>Author</label>
+				<span>{{ book.author }}</span>
+			</li>
+			{% if book.genre_name %}
+				<li>
+					<label>Genre</label>
+					<span>{{ book.genre_name }}</span>
+				</li>
+			{% endif %}
+			{% if book.isbn %}
+				<li>
+					<label>ISBN</label>
+					<span>{{ book.isbn }}</span>
+				</li>
+			{% endif %}
+			<li>
+				<label>Price</label>
+				<span>{{ book.price }}</span>
+			</li>
+		</ul>
+		{% if book.id_owner == user.id %}
+			<a href="/book/{{ book.id }}/edit">Edit this book</a>
+			<a href="/book/{{ book.id }}/delete" style="color: red;">Delete this book</a>
+		{% endif %}
+	</main>
 {% endblock %}

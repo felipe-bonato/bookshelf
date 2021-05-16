@@ -10,7 +10,7 @@
 }
 
 .nav-item {
-	padding: .1rem .75rem;
+	padding: .1rem clamp(0px, .75em, 3em);
 	
 	font: bold 1rem var(--font-main);
 	color: var(--text-dark);

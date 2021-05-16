@@ -13,12 +13,12 @@ class Book extends \Core\Model
 	{
 		$conn = static::get_db_conection();
 			
-		if(!$stmt = $conn->prepare("SELECT id, id_owner, id_buyer, id_genre, name, author, isbn, price, cover_image FROM book WHERE book.deleted_at IS NULL;")){
-			throw new \Exception("Could not prepare fetch book name by book id statement");
+		if(!$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, cover_image, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.deleted_at IS NULL')){
+			throw new \Exception('Could not prepare fetch book name by book id statement');
 		}
 		
 		if(!$stmt->execute()){
-			throw new \Exception("Could not execute database query");
+			throw new \Exception('Could not execute database query');
 		}
 		
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
@@ -83,7 +83,7 @@ class Book extends \Core\Model
 	public static function get_book_by_id(int $id)
 	{
 		$conn = static::get_db_conection();
-		$stmt = $conn->prepare('SELECT * FROM book WHERE book.id = :id AND book.deleted_at IS NULL');
+		$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, cover_image, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.id = :id AND book.deleted_at IS NULL');
 		
 		
 		if($stmt === 0){

@@ -110,7 +110,7 @@ body::-webkit-scrollbar-thumb {
 	font-size: 1rem;
 }
 
-.s-fieldset input {
+.s-fieldset input[type="text"],[type="email"],[type="password"],[type="number"],[type="date"] {
 	border-radius: var(--rounding);
 	
 	height: 3em;
