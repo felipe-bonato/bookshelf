@@ -10,7 +10,12 @@ class Book extends \Core\Controller
 		$this->require_login();
 		
 		$book = new \App\Model\Book($_POST);
-		\Core\View::render_templeate('book/sell.html', ['book' => $book]);
+		$book_genres = \App\Model\Book::get_all_genres();
+
+		\Core\View::render_templeate('book/sell.html', [
+			'book' => $book,
+			'book_genres' => $book_genres
+		]);
 	}
 
 	public function insert_action(): void
@@ -44,9 +49,11 @@ class Book extends \Core\Controller
 	public function edit_action(int $id): void
 	{
 		$book = \App\Model\Book::get_book_by_id($id);
-		
+		$book_genres = \App\Model\Book::get_all_genres();
+
 		\Core\View::render_templeate('book/edit.html', [
-			'book' => $book
+			'book' => $book,
+			'book_genres' => $book_genres
 		]);
 		
 		

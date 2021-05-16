@@ -3,54 +3,58 @@
 {% block title %}Edit{% endblock %}
 
 {% block body %}
-	<h1>Edit book</h1>
 
 	{% if book.errors is not empty %}
 		<div>
 			<ul>
 				{% for error in book.errors %}	
-					<li>{{error}}</li>
+				<li>{{error}}</li>
 				{% endfor %}
 			</ul>
 		</div>
 	{% endif %}
-
-	<form method="POST" action="/book/modify" id="book-modify-form">
-		<fieldset>
-			<label>Name</label>
-			<input type="text" name="name"  value="{{ book.name }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Author</label>
-			<input type="text" name="author" value="{{ book.author }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Genre</label>
-			<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
-		</fieldset>
-		<fieldset>
-			<label>ISBN</label>
-			<input type="text" name="isbn" value="{{ book.isbn }}">			
-		</fieldset>
-		<fieldset>
-			<label>Price</label>
-			<input type="number" name="price" value="{{ book.price }}" required>			
-		</fieldset>
-		<fieldset>
-			<label>Cover Image</label>
-			<input type="file" name="cover_image" value="{{ book.cover_image }}" required>			
-		</fieldset>
-		<fieldset>
-			<input type="checkbox" name="terms" value="{{ book.terms }}" required>
-			<label>I read and agree with the <a href="terms.html.php">Terms and Conditions</a></label>
-		</fieldset>
-		<input type="hidden" name="id" value="{{ book.id }}"> <!-- This allow us to get the book id on modify -->
-		<fieldset>
-			<button type="submit">
-				<span>Edit!</span>
-			</button>
-		</fieldset>
-	</form>
+		
+	<main class="s-main-con">	
+		<h1 class="s-tittle">Edit</h1>
+		<form method="POST" enctype="multipart/form-data" action="/book/modify" id="book-modify-form" class="s-form">
+			<fieldset class="s-fieldset">
+				<label>Name</label>
+				<input type="text" name="name"  value="{{ book.name }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Cover Image</label>
+				<input type="file" name="cover_image" value="{{ book.cover_image }}" required>			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Author</label>
+				<input type="text" name="author" value="{{ book.author }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Genre</label>
+				<select name="id_genre">
+					{% for genre in book_genres %}
+						<option value="{{ genre.id }}" {% if book.id_genre == genre.id %}selected{% endif %}>{{ genre.name }}</option>
+					{% endfor %}
+				</select>			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>ISBN</label>
+				<input type="text" name="isbn" value="{{ book.isbn }}">			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Price</label>
+				<input type="number" name="price" value="{{ book.price }}" required>			
+			</fieldset>
+			<fieldset class="s-checkbox">
+				<input type="checkbox" name="terms" value="{{ book.terms }}" required>
+				<label>I read and agree with the <a href="terms.html.php">Terms and Conditions</a></label>
+			</fieldset>
+			<input type="hidden" name="id" value="{{ book.id }}"> <!-- This allow us to get the book id on modify -->
+			<fieldset  class="s-button">
+				<button type="submit">Edit!</button>
+			</fieldset>
+		</form>
+	</main>
 {% endblock %}
 
 {% block scripts %}

@@ -14,11 +14,11 @@
 	</div>
 	{% endif %}
 	<main class="s-main-con">
-		<h1 class="s-tittle">Sell book</h1>
-		<form method="POST" action="/book/insert" id="register-new-form" class="s-form">
+		<h1 class="s-tittle">Sell</h1>
+		<form method="POST" enctype="multipart/form-data" action="/book/insert" id="register-new-form" class="s-form">
 			<fieldset class="s-fieldset">
 				<label>Cover Image</label>
-				<input type="file" name="cover_image" value="{{ book.cover_image }}" required>			
+				<input type="file" name="cover_image" required>			
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>Name</label>
@@ -30,7 +30,14 @@
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>Genre</label>
-				<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
+				<select name="id_genre">
+					{% for genre in book_genres %}
+						<option value="{{ genre.id }}">{{ genre.name }}</option>
+					{% endfor %}
+				</select>
+				<!--
+					<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
+				-->
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>ISBN</label>

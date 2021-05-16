@@ -40,8 +40,18 @@
 			</li>
 		</ul>
 		{% if book.id_owner == user.id %}
-			<a href="/book/{{ book.id }}/edit">Edit this book</a>
-			<a href="/book/{{ book.id }}/delete" style="color: red;">Delete this book</a>
+		<div>
+			<form action="/book/{{ book.id }}/edit" class="s-button" style="margin-bottom: 16px;">
+				<button type="submit">Edit</button>
+			</form>
+			<form action="/book/{{ book.id }}/delete" class="s-button">
+				<button type="submit" style="background-color: var(--error); color: var(--text-light)">Delete</button>
+			</form>
+		</div>
+		{% else %}
+			<form action="#" class="s-button">
+				<button type="submit">Buy!</button>
+			</form>
 		{% endif %}
 	</main>
 {% endblock %}
