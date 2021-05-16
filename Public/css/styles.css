@@ -78,28 +78,26 @@ body::-webkit-scrollbar-thumb {
 .s-button button {
 	height: 3rem;
 	width: 100%;
-	padding: var(--padding-itens) 0 var(--padding-itens) 0;
 	
 	font: bold 1.25rem var(--font-main);
 	color: var(--text-dark);
+	
+	padding: 0 1em;
 
 	border-radius: var(--rounding);
 	background-color: var(--primary-dark);
 	
-	box-shadow: .125em .125em .5em var(--shadow-light);
-	
-	transition: transform calc(var(--transition-time) / 3) linear;
-}
-
-.s-button:hover {
-	transform: scale(1.0625);
 	cursor: pointer;
-	box-shadow: .25em .25em .25em var(--shadow);
+
+	transition: transform calc(var(--transition-time) / 4) linear;
 }
 
-.s-button:hover span {
+.s-button button:hover {
+	transform: scale(1.0625);
+
 	color: var(--text-light);
-	text-shadow: .15em .15em .25em var(--shadow);
+	
+	box-shadow: var(--shadow-small);
 }
 
 .s-fieldset {

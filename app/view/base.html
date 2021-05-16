@@ -35,7 +35,10 @@
 	<!-- FLASH MESSAGES -->
 	<div id="flash-con">
 		{% for message in flash %}
-			<h3 class="flash-{{message.type}}">{{ message.text }}</h3>
+			<div class="flash-message flash-{{message.type}}">
+				<img src="img/icon/flash/{{ message.type }}.svg">
+				<h3>{{ message.text }}</h3>
+			</div>
 		{% endfor %}
 	</div>
 	
