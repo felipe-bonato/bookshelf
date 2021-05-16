@@ -5,12 +5,6 @@
  */
 class Book extends \Core\Controller
 {
-	public function index_action(): void
-	{
-		$books = \App\Model\Book::get_all();
-		\Core\View::render_templeate('book/index.html', ['books' => $books]);
-	}
-
 	public function sell_action(): void
 	{
 		$this->require_login();

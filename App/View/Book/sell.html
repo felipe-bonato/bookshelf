@@ -3,53 +3,52 @@
 {% block title %}Sell{% endblock %}
 
 {% block body %}
-	<h1>Sell book page</h1>
 
 	{% if book.errors is not empty %}
-		<div>
-			<ul>
-				{% for error in book.errors %}	
-					<li>{{error}}</li>
-				{% endfor %}
-			</ul>
-		</div>
+	<div>
+		<ul>
+			{% for error in book.errors %}	
+			<li>{{error}}</li>
+			{% endfor %}
+		</ul>
+	</div>
 	{% endif %}
-
-	<form method="POST" action="/book/insert" id="register-new-form">
-		<fieldset>
-			<label>Name</label>
-			<input type="text" name="name"  value="{{ book.name }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Author</label>
-			<input type="text" name="author" value="{{ book.author }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Genre</label>
-			<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
-		</fieldset>
-		<fieldset>
-			<label>ISBN</label>
-			<input type="text" name="isbn" value="{{ book.isbn }}">			
-		</fieldset>
-		<fieldset>
-			<label>Price</label>
-			<input type="number" name="price" value="{{ book.price }}" required>			
-		</fieldset>
-		<fieldset>
-			<label>Cover Image</label>
-			<input type="file" name="cover_image" value="{{ book.cover_image }}" required>			
-		</fieldset>
-		<fieldset>
-			<input type="checkbox" name="terms" required>
-			<label>I read and agree with the <a href="terms.html.php">Terms and Conditions</a></label>
-		</fieldset>
-		<fieldset>
-			<button type="submit">
-				<span>Sell!</span>
-			</button>
-		</fieldset>
-	</form>
+	<main class="s-main-con">
+		<h1 class="s-tittle">Sell book</h1>
+		<form method="POST" action="/book/insert" id="register-new-form" class="s-form">
+			<fieldset class="s-fieldset">
+				<label>Cover Image</label>
+				<input type="file" name="cover_image" value="{{ book.cover_image }}" required>			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Name</label>
+				<input type="text" name="name"  value="{{ book.name }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Author</label>
+				<input type="text" name="author" value="{{ book.author }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Genre</label>
+				<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>ISBN</label>
+				<input type="text" name="isbn" value="{{ book.isbn }}">			
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Price</label>
+				<input type="number" name="price" value="{{ book.price }}" required>			
+			</fieldset>
+			<fieldset class="s-checkbox">
+				<input type="checkbox" name="terms" required>
+				<label>I read and agree with the <a href="terms.html.php">Terms and Conditions</a></label>
+			</fieldset>
+			<fieldset class="s-button">
+				<button type="submit">Sell!</button>
+			</fieldset>
+		</form>
+	</main>
 {% endblock %}
 
 {% block scripts %}

@@ -3,53 +3,52 @@
 {% block title %}Profile{% endblock %}
 
 {% block body %}
-	<h1>Profile page</h1>
 
-	{% if user.errors is not empty %}
-		<div>
-			<ul>
-				{% for error in user.errors %}	
-					<li>{{error}}</li>
-				{% endfor %}
-			</ul>
-		</div>
+{% if user.errors is not empty %}
+	<div>
+		<ul>
+			{% for error in user.errors %}	
+			<li>{{error}}</li>
+			{% endfor %}
+		</ul>
+	</div>
 	{% endif %}
-
-	<form method="POST" action="/profile/modify" id="profile-modify-form">
-		<fieldset>
-			<label>Email</label>
-			<input type="email" name="email" value="{{ user.email }}" required>
-		</fieldset>
-		<fieldset> <!-- TODO: MAKE EYE THING-->
-			<label>Password</label>
-			<input type="password" name="password" id="password" value="" autocomplete="off">
-			<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
-			<small>Leave empty if do not want to change</small>
-			<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
-		</fieldset>
-		<fieldset>
-			<label>Fullname</label>
-			<input type="text" name="fullname" value="{{ user.fullname }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Nickname</label>
-			<input type="text" name="nickname" value="{{ user.nickname }}">
-			<!--small>Optional; If not set we will call you by your first name.</small-->
-		</fieldset>
-		<fieldset>
-			<label>Birthday</label>
-			<input type="date" name="birthday" value="{{ user.birthday }}" required>
-		</fieldset>
-		<fieldset>
-			<label>Address</label required>
-			<input type="text" value="{{ user.address }}" name="address">
-		</fieldset>
-		<fieldset>
-			<button type="submit">
-				<span>Save!</span>
-			</button>
-		</fieldset>
-	</form>
+	<main class="s-main-con">
+		<h1 class="s-tittle">Your Profile</h1>
+		<form method="POST" action="/profile/modify" id="profile-modify-form"  class="s-form">
+			<fieldset class="s-fieldset">
+				<label>Email</label>
+				<input type="email" name="email" value="{{ user.email }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Password</label>
+				<input type="password" name="password" id="password" value="" autocomplete="off">
+				<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
+				<small>Leave empty if do not want to change</small>
+				<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Fullname</label>
+				<input type="text" name="fullname" value="{{ user.fullname }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Nickname</label>
+				<input type="text" name="nickname" value="{{ user.nickname }}">
+				<!--small>Optional; If not set we will call you by your first name.</small-->
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Birthday</label>
+				<input type="date" name="birthday" value="{{ user.birthday }}" required>
+			</fieldset>
+			<fieldset class="s-fieldset">
+				<label>Address</label required>
+				<input type="text" value="{{ user.address }}" name="address">
+			</fieldset>
+			<fieldset class="s-button">
+				<button type="submit">Save!</button>
+			</fieldset>
+		</form>
+	</main>
 {% endblock %}
 
 {% block scripts %}
