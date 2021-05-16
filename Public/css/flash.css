@@ -6,8 +6,19 @@
 	text-align: center;
 }
 
-#flash-con h3 {
+.flash-message h3 {
+	color: var(--text-light);
+}
+
+.flash-message img {
+	display: block;
+	padding: 0 8px;
+}
+
+.flash-message {
 	padding: 8px;
+	display: flex;
+	flex-direction: row;
 }
 
 .flash-info {
@@ -25,4 +36,3 @@
 .flash-error {
 	background-color: var(--error);
 }
-

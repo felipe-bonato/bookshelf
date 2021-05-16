@@ -47,7 +47,7 @@ abstract class Controller
 	{
 		if(!\App\Auth::get_user()){
 			\App\Auth::set_return_page();
-			\App\Flash::add_message("Please login before accessing the page", \App\Flash::INFO);
+			\App\Flash::add_message("Please, you need login before accessing that page", \App\Flash::INFO);
 			\App\redirect('login');
 			exit;
 		}
