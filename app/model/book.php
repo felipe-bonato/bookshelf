@@ -190,4 +190,23 @@ class Book extends \Core\Model
 		
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
 	}
+
+	static function search(string $search_string): array
+	{
+		$search_string = '%'.$search_string.'%';
+
+		$conn = static::get_db_conection();
+			
+		if(!$stmt = $conn->prepare('SELECT * FROM book WHERE book.name LIKE :search_string')){
+			throw new \Exception('Could not prepare serach book statement');
+		}
+		
+		if(!$stmt->execute([
+			':search_string' => $search_string
+		])){
+			throw new \Exception('Could not execute database query');
+		}
+		
+		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
+	}
 }
