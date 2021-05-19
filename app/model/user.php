@@ -310,4 +310,18 @@ class User extends \Core\Model
 		
 		return $stmt->fetchAll(\PDO::FETCH_ASSOC) ?? [];
 	}
+
+	public function delete()
+	{
+		$conn = static::get_db_conection();
+
+		if(!$stmt = $conn->prepare('UPDATE user SET deleted_at=:deleted_at WHERE id=:id;')){
+			throw new \Exception('Could not prepare user delete statement');
+		}
+		
+		return $stmt->execute([
+			':deleted_at' => date('Y-m-d H:i:s'),
+			':id' => $this->id
+		]);
+	}
 }
