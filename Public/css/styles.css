@@ -26,7 +26,7 @@
 	/* STANDARD SIZES */
 	--width-con-small: clamp(200px, 15%, 1000px);
 	--width-con-large: clamp(360px, 85%, 900px);
-	--width-con-mobile: clamp(320px, 95%, 1024px);
+	--width-con-mobile: clamp(300px, 95%, 900px);
 
 	--margin-con: 100px;
 
@@ -75,7 +75,7 @@ body::-webkit-scrollbar-thumb {
 	box-shadow: 0 0 1rem var(--shadow);
 }*/
 
-.s-button button {
+.s-button > button {
 	height: 3rem;
 	width: 100%;
 	
@@ -92,12 +92,17 @@ body::-webkit-scrollbar-thumb {
 	transition: transform calc(var(--transition-time) / 4) linear;
 }
 
-.s-button button:hover {
+.s-button > button:hover {
 	transform: scale(1.0625);
 
 	color: var(--text-light);
 	
 	box-shadow: var(--shadow-small);
+}
+
+.s-button-danger > button {
+	background-color: var(--error);
+	color: var(--text-light);
 }
 
 .s-fieldset {
@@ -129,7 +134,7 @@ body::-webkit-scrollbar-thumb {
 	background-color: var(--background);
 }
 
-.s-fieldset div {
+.s-fieldset > div {
 	display: flex;
 	flex-direction: row;
 	flex-wrap: nowrap;
@@ -157,7 +162,7 @@ body::-webkit-scrollbar-thumb {
 .s-main-con {
 	width: var(--width-con-mobile);
 
-	margin: 32px auto auto auto;
+	margin: 32px auto 32px auto;
 	padding: var(--padding-con);
 
 	background-color: var(--primary-light);
@@ -174,7 +179,7 @@ body::-webkit-scrollbar-thumb {
 }
 
 .s-form {
-	display: grid;
-	grid-template-columns: auto;
+	display: flex;
+	flex-direction: column;
 	gap: 32px;
 }

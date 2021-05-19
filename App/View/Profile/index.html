@@ -21,11 +21,16 @@
 				<input type="email" name="email" value="{{ user.email }}" required>
 			</fieldset>
 			<fieldset class="s-fieldset">
-				<label>Password</label>
-				<input type="password" name="password" id="password" value="" autocomplete="off">
-				<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
-				<small>Leave empty if do not want to change</small>
-				<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
+				<label>Password*</label>
+				<div>
+					<input type="password" name="password" id="password" autocomplete="off">
+						<button type="button" onclick="toggle_password_visibility()">
+							<img id="password-visibility-img" src="/img/icon/visibility_on.svg">
+						</button>
+					</input>
+				</div>
+				<small>*Leave empty if you do not want to change.</small>
+				<small>*Password must be 8 or above characters and contain at least a letter and a number.</small>
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>Fullname</label>
@@ -46,6 +51,11 @@
 			</fieldset>
 			<fieldset class="s-button">
 				<button type="submit">Save!</button>
+			</fieldset>
+		</form>
+		<form action="/profile/delete" style="margin-top: 16px;">
+			<fieldset class="s-button s-button-danger">
+				<button type="submit">Delete</button>
 			</fieldset>
 		</form>
 	</main>
@@ -84,21 +94,6 @@
 			},
 			'Must have at least one letter and one number'
 		);
-
-		var password = $('#password');
-		var eye= $("#eye");
-		
-		eye.mousedown(function() {
-			password.attr("type", "text");
-		});
-			
-		eye.mouseup(function() {
-			password.attr("type", "password");
-		});
-		// para evitar o problema de arrastar a imagem e a senha continuar exposta
-		$( "#eye" ).mouseout(function() { 
-			password.attr("type", "password");
-		});
 
 		$(document).ready(function(){
 			$('#register-new-form').validate({

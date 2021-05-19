@@ -2,7 +2,7 @@
 	display: flex;
 	flex-flow: row;
 	justify-content: space-around;
-
+	
 	padding: 0 clamp(25px, 10%, 1024px);
 	
 	background-color: var(--primary-light);
@@ -10,9 +10,12 @@
 }
 
 .nav-item {
-	padding: .1rem clamp(0px, .75em, 3em);
+	z-index: 100;
 	
-	font: bold 1rem var(--font-main);
+	padding: .25em clamp(0px, .75em, 3em);
+	
+	/*font: bold 1rem var(--font-main);*/
+	font: bold clamp(.75rem, 4vw, 1.25rem) var(--font-main);
 	color: var(--text-dark);
 	text-decoration: none;
 	
