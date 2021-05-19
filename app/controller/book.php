@@ -23,8 +23,10 @@ class Book extends \Core\Controller
 		$book = new \App\Model\Book($_POST);
 		
 		if(!$book->insert()){
+			$book_genres = \App\Model\Book::get_all_genres();
 			\Core\View::render_templeate('book/sell.html', [
-				'book' => $book
+				'book' => $book,
+				'book_genres' => $book_genres
 			]);
 			return;
 		}
@@ -48,7 +50,15 @@ class Book extends \Core\Controller
 
 	public function edit_action(int $id): void
 	{
+		$this->require_login();
+
 		$book = \App\Model\Book::get_book_by_id($id);
+
+		if(empty($book)){
+			\App\Flash::add_message('Book does not exist', \App\Flash::ERROR);
+			\App\redirect('');
+		}
+
 		$book_genres = \App\Model\Book::get_all_genres();
 
 		\Core\View::render_templeate('book/edit.html', [
@@ -66,7 +76,7 @@ class Book extends \Core\Controller
 
 		if($book->modify()){
 			\App\Flash::add_message('Your book was modified successfully!', \App\Flash::SUCCESS);
-			\App\redirect('book/'.$book->id);
+			\App\redirect('book/'.$book->id.'/view');
 		} else {
 			\App\Flash::add_message('Could not modify your book!', \App\Flash::WARNING);
 			\Core\View::render_templeate('book/modify.html', [
