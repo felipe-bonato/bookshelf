@@ -15,14 +15,15 @@
 	padding: .25em clamp(0px, .75em, 3em);
 	
 	/*font: bold 1rem var(--font-main);*/
-	font: bold clamp(.75rem, 4vw, 1.25rem) var(--font-main);
+	font: bold clamp(.75rem, 4vw, 1.125rem) var(--font-main);
 	color: var(--text-dark);
 	text-decoration: none;
 	
 	border-radius: 16px;
 	background: transparent;
 
-	transition: transform calc(var(--transition-time) * 2) cubic-bezier(0.19, 1, 0.22, 1);
+	transition: transform calc(var(--transition-time) * .66) ease-out;
+	/*transition: transform calc(var(--transition-time) * 2) cubic-bezier(0.19, 1, 0.22, 1);*/
 }
 
 .nav-item:hover {

@@ -1,10 +1,32 @@
+@keyframes slide-out {
+    0% {
+		visibility: visible;
+        opacity: 1;
+    }
+	95% {
+		visibility: visible;
+		opacity: 1;
+    }
+    100% {
+		visibility: hidden;
+        opacity: 0;
+    }
+}
+
 #flash-con {
+	position: fixed;
+	visibility: hidden;
+	bottom: 0px;
+	z-index: 1000;
+
 	width: 100%;
 
-	margin: 8px 0;
-
 	text-align: center;
+
+	animation: calc(var(--transition-time) * 2 * 15) ease-out 0s 1 slide-out;
 }
+
+
 
 .flash-message img {
 	display: block;
@@ -15,26 +37,31 @@
 .flash-message {
 	display: flex;
 	flex-direction: row;
-	
+
 	padding: 8px;
+
+	border: 4px solid black;
+	border-radius: var(--rounding);
+	box-shadow: 0 0 8px black;
 }
 
 .flash-info {
 	color: var(--text-light);
 
-	background-color: var(--info);
+	background-color: rgba(0, 127, 255, .85);
+	border-color: rgba(0, 127, 255);
 }
 
 .flash-success {
 	color: var(--text-light);
 	
-	background-color: var(--success);
+	background-color: rgba(0, 255, 0, .85);
 }
 
 .flash-warning {
 	color: var(--text-dark);
 	
-	background-color: var(--warning);
+	background-color: rgba(255, 255, 0, .85);
 }
 
 .flash-warning img {
@@ -44,5 +71,5 @@
 .flash-error {
 	color: var(--text-light);
 	
-	background-color: var(--error);
+	background-color: rgba(255, 0, 0, 0.85);
 }

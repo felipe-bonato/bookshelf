@@ -1,12 +1,17 @@
 #home-index-book-con {
 	display: grid;
 	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
-	/*grid-template-columns: repeat(2, auto);*/
 	justify-items: stretch;
 	gap: 8px;
 
 	width: var(--width-con-mobile);
 	margin: 16px auto;
+}
+
+@media screen and (min-width: 900px) {
+	#home-index-book-con {
+		grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	}
 }
 
 .home-index-book img {
@@ -18,7 +23,7 @@
 }
 
 .home-index-book img {
-	transition: transform calc(var(--transition-time) / 3) linear;
+	transition: transform calc(var(--transition-time) * .5) ease-in-out;
 }
 
 .home-index-book:hover img {

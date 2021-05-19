@@ -12,9 +12,9 @@
 	--primary-light: #8FD4EF;
 	--background: #EAF5FB;
 
-	--info: #00f;
+	--info: #0000ff;
 	--success: #0f0;
-	--warning: #ff0;
+	--warning: #ffff00;
 	--error: #f33a1a;
 
 	--text-dark: #000b11;
@@ -35,16 +35,18 @@
 	/* STANDARD SHADOWS */
 	--shadow-small: 2px 2px 4px 0px var(--shadow-light);
 	--shadow-large: 2px 2px 8px 2px var(--shadow);
-
+	
 	--container-lr-padding: 15%;
 	--margin-itens: 3rem;
-	--transition-time: 250ms;
-
+	
 	--rounding: 15px;
 	
 	--margin: 15px;
 	--pading: 15px;
-
+	
+	/* ANIMATIONS */
+	--transition-time: 250ms;
+	
 	/* FONTS */
 	--font-main: 'Proza Libre', sans-serif;
 
