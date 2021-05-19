@@ -6,33 +6,43 @@
 	text-align: center;
 }
 
-.flash-message h3 {
-	color: var(--text-light);
-}
-
 .flash-message img {
 	display: block;
+	
 	padding: 0 8px;
 }
 
 .flash-message {
-	padding: 8px;
 	display: flex;
 	flex-direction: row;
+	
+	padding: 8px;
 }
 
 .flash-info {
+	color: var(--text-light);
+
 	background-color: var(--info);
 }
 
 .flash-success {
+	color: var(--text-light);
+	
 	background-color: var(--success);
 }
 
 .flash-warning {
+	color: var(--text-dark);
+	
 	background-color: var(--warning);
 }
 
+.flash-warning img {
+	filter: invert(1);
+}
+
 .flash-error {
+	color: var(--text-light);
+	
 	background-color: var(--error);
 }

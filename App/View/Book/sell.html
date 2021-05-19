@@ -32,12 +32,9 @@
 				<label>Genre</label>
 				<select name="id_genre">
 					{% for genre in book_genres %}
-						<option value="{{ genre.id }}">{{ genre.name }}</option>
+						<option value="{% if genre.id %}{{ genre.id }}{% else %} {% endif %}" {% if book.id_genre == genre.id %}selected{% endif %}>{{ genre.name }}</option>
 					{% endfor %}
 				</select>
-				<!--
-					<input type="text" name="id_genre" value="{{ book.id_genre }}" required>			
-				-->
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>ISBN</label>

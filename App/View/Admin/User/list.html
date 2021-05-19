@@ -3,66 +3,62 @@
 {% block title %}Users{% endblock %}
 
 {% block body %}
-	<h1>Users</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>id_user_type</th>
-			<th>email</th>
-			<th>password</th>
-			<th>fullname</th>
-			<th>nickname</th>
-			<th>birthday</th>
-			<th>address</th>
-			<th>created_at</th>
-			<th>deleted_at</th>
-		</tr>
-		{% for user in users %}
+	<main class="s-main-con">
+		<h1>Users</h1>
+		<table>
 			<tr>
-				<td>{{ user.id }}</td>
-				<td>{{ user.id_user_type }}</td>
-				<td>{{ user.email }}</td>
-				<td>{{ user.password }}</td>
-				<td>{{ user.fullname }}</td>
-				<td>{{ user.nickname }}</td>
-				<td>{{ user.birthday }}</td>
-				<td>{{ user.address }}</td>
-				<td>{{ user.created_at }}</td>
-				<td>{{ user.deleted_at }}</td>
+				<th>email</th>
+				<th>id_user_type</th>
+				<th>fullname</th>
+				<th>nickname</th>
+				<th>birthday</th>
+				<th>address</th>
+				<th>created_at</th>
+				<th>deleted_at</th>
 			</tr>
-		{% endfor %}
-	</table>
+			{% for user in users %}
+				<tr>
+					<td><a href="/profile/{{ user.id }}/view">{{ user.email }}</a></td>
+					<td>{{ user.id_user_type }}</td>
+					<td>{{ user.fullname }}</td>
+					<td>{{ user.nickname }}</td>
+					<td>{{ user.birthday }}</td>
+					<td>{{ user.address }}</td>
+					<td>{{ user.created_at }}</td>
+					<td>{{ user.deleted_at }}</td>
+				</tr>
+			{% endfor %}
+		</table>
 
 
 
-	<h1>Deleted Users</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>id_user_type</th>
-			<th>email</th>
-			<th>password</th>
-			<th>fullname</th>
-			<th>nickname</th>
-			<th>birthday</th>
-			<th>address</th>
-			<th>created_at</th>
-			<th>deleted_at</th>
-		</tr>
-		{% for user in deleted_users %}
+		<h1>Deleted Users</h1>
+		<table>
 			<tr>
-				<td>{{ user.id }}</td>
-				<td>{{ user.id_user_type }}</td>
-				<td>{{ user.email }}</td>
-				<td>{{ user.password }}</td>
-				<td>{{ user.fullname }}</td>
-				<td>{{ user.nickname }}</td>
-				<td>{{ user.birthday }}</td>
-				<td>{{ user.address }}</td>
-				<td>{{ user.created_at }}</td>
-				<td>{{ user.deleted_at }}</td>
-				<td><a href="/user/{{user.id}}">View</a></td>
+				<th>id</th>
+				<th>id_user_type</th>
+				<th>email</th>
+				<th>fullname</th>
+				<th>nickname</th>
+				<th>birthday</th>
+				<th>address</th>
+				<th>created_at</th>
+				<th>deleted_at</th>
 			</tr>
-		{% endfor %}
-	</table>
+			{% for user in deleted_users %}
+				<tr>
+					<td>{{ user.id }}</td>
+					<td>{{ user.id_user_type }}</td>
+					<td>{{ user.email }}</td>
+					<td>{{ user.fullname }}</td>
+					<td>{{ user.nickname }}</td>
+					<td>{{ user.birthday }}</td>
+					<td>{{ user.address }}</td>
+					<td>{{ user.created_at }}</td>
+					<td>{{ user.deleted_at }}</td>
+					<td><a href="/user/{{user.id}}">View</a></td>
+				</tr>
+			{% endfor %}
+		</table>
+	</main>
 {% endblock %}

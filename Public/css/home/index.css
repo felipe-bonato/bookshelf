@@ -1,6 +1,7 @@
 #home-index-book-con {
 	display: grid;
-	grid-template-columns: repeat(2, auto);
+	grid-template-columns: repeat(auto-fit, minmax(128px, 1fr));
+	/*grid-template-columns: repeat(2, auto);*/
 	justify-items: stretch;
 	gap: 8px;
 

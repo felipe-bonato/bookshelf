@@ -3,65 +3,69 @@
 {% block title %}Books{% endblock %}
 
 {% block body %}
-	<h1>Books</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>id_owner</th>
-			<th>id_genre</th>
-			<th>name</th>
-			<th>author</th>
-			<th>isbn</th>
-			<th>price</th>
-			<th>cover_image</th>
-			<th>created_at</th>
-			<th>last_modified_at</th>
-		</tr>
-		{% for book in books %}
+	<main class="s-main-con">
+		<h1 class="s-tittle">Books</h1>
+		<table>
 			<tr>
-				<td>{{ book.id }}</td>
-				<td>{{ book.id_owner }}</td>
-				<td>{{ book.id_genre }}</td>
-				<td>{{ book.name }}</td>
-				<td>{{ book.author }}</td>
-				<td>{{ book.isbn }}</td>
-				<td>{{ book.price }}</td>
-				<td><img href="{{ book.cover_image }}"></td>
-				<td>{{ book.created_at }}</td>
-				<td>{{ book.last_modified_at }}</td>
+				<th>name</th>
+				<th>cover</th>
+				<th>genre</th>
+				<th>author</th>
+				<th>isbn</th>
+				<th>price</th>
+				<th>created_at</th>
+				<th>last_modified_at</th>
+				<th>owner</th>
+				<th>buyer</th>
 			</tr>
-		{% endfor %}
-	</table>
+			{% for book in books %}
+				<tr>
+					<td><a href="/book/{{ book.id }}/view">{{ book.name }}</a></td>
+					<td><img loading="lazy" decoding="async" src="/img/users_upload/books_cover/{{ book.id }}" alt="{{ book.name }}" height="64px" width="auto" alt="none"></td>
+					<td>{{ book.genre_name }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.isbn }}</td>
+					<td>{{ book.price }}</td>
+					<td>{{ book.created_at }}</td>
+					<td>{{ book.last_modified_at }}</td>
+					<td><a href="/user/{{ book.id_owner }}">{{ book.owner_fullname }}</a></td>
+					<td><a href="/user/{{ book.id_buyer }}">{{ book.buyer_fullname }}</a></td>
+				</tr>
+			{% endfor %}
+		</table>
 
 
 
-	<h1>Deleted Books</h1>
-	<table>
-		<tr>
-			<th>id</th>
-			<th>id_owner</th>
-			<th>id_genre</th>
-			<th>name</th>
-			<th>author</th>
-			<th>isbn</th>
-			<th>price</th>
-			<th>cover_image</th>
-			<th>created_at</th>
-			<th>last_modified_at</th>
-		</tr>
-		{% for book in deleted_books %}
+		<h1 class="s-tittle">Deleted Books</h1>
+		<table>
 			<tr>
-				<td>{{ book.id }}</td>
-				<td>{{ book.id_owner }}</td>
-				<td>{{ book.id_genre }}</td>
-				<td>{{ book.name }}</td>
-				<td>{{ book.author }}</td>
-				<td>{{ book.isbn }}</td>
-				<td>{{ book.price }}</td>
-				<td><img href="{{ book.cover_image }}"></td>
-				<td>{{ book.created_at }}</td>
-				<td>{{ book.last_modified_at }}</td>
+				<th>id</th>
+				<th>id_owner</th>
+				<th>id_genre</th>
+				<th>name</th>
+				<th>author</th>
+				<th>isbn</th>
+				<th>price</th>
+				<th>cover_image</th>
+				<th>created_at</th>
+				<th>last_modified_at</th>
+				<th>deleted_at</th>
 			</tr>
-		{% endfor %}
-	</table>
+			{% for book in deleted_books %}
+				<tr>
+					<td>{{ book.id }}</td>
+					<td>{{ book.id_owner }}</td>
+					<td>{{ book.id_genre }}</td>
+					<td>{{ book.name }}</td>
+					<td>{{ book.author }}</td>
+					<td>{{ book.isbn }}</td>
+					<td>{{ book.price }}</td>
+					<td><img loading="lazy" decoding="async" src="/img/users_upload/books_cover/{{ book.id }}" alt="{{ book.name }}" height="64px" width="auto" alt="none"></td>
+					<td>{{ book.created_at }}</td>
+					<td>{{ book.last_modified_at }}</td>
+					<td>{{ book.deleted_at }}</td>
+				</tr>
+			{% endfor %}
+		</table>
+	</main>
 {% endblock %}

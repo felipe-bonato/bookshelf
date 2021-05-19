@@ -39,13 +39,13 @@
 				<span>{{ book.price }}</span>
 			</li>
 		</ul>
-		{% if book.id_owner == user.id %}
+		{% if book.id_owner == user.id or user.id_user_type == 2 %}
 		<div>
 			<form action="/book/{{ book.id }}/edit" class="s-button" style="margin-bottom: 16px;">
 				<button type="submit">Edit</button>
 			</form>
-			<form action="/book/{{ book.id }}/delete" class="s-button">
-				<button type="submit" style="background-color: var(--error); color: var(--text-light)">Delete</button>
+			<form action="/book/{{ book.id }}/delete" class="s-button s-button-danger">
+				<button type="submit">Delete</button>
 			</form>
 		</div>
 		{% else %}

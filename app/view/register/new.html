@@ -21,11 +21,16 @@
 				<label>Email</label>
 				<input type="email" name="email" value="{{ user.email }}" required>
 			</fieldset>
-			<fieldset class="s-fieldset"> <!-- TODO: MAKE EYE THING-->
-				<label>Password</label>
-				<input type="password" name="password" id="password" required>
-				<button type="button" onclick="toggle_password_visibility()"><img id="password-visibility-img" src="/img/icon/visibility_off.svg"></button>
-				<!--small>Password must be 8 or above characters and contain at least a letter and a number.</small-->
+			<fieldset class="s-fieldset">
+				<label>Password*</label>
+				<div>
+					<input type="password" name="password" id="password" required>
+						<button type="button" onclick="toggle_password_visibility()">
+							<img id="password-visibility-img" src="/img/icon/visibility_on.svg">
+						</button>
+					</input>
+				</div>
+				<small>*Password must be 8 or above characters and contain at least a letter and a number.</small>
 			</fieldset>
 			<fieldset class="s-fieldset">
 				<label>Fullname</label>
@@ -73,8 +78,7 @@
 			}
 			return false;
 		}
-		
-		
+			
 		$.validator.addMethod('passwordLetterAndNumber', function(value, element, param){
 				if(value != '') {
 					if(value.match(/.*[a-z]+.*/i) == null) {
