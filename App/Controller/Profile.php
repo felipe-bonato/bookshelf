@@ -36,4 +36,13 @@ class Profile extends \Core\Controller
 
 		\App\redirect('');
 	}
+
+	public function view(int $id): void
+	{
+		$this->require_admin();
+
+		\Core\View::render_templeate('profile/index.html', [
+			'user' => \App\Model\User::get_user_by_id($id)
+		]);
+	}
 }
