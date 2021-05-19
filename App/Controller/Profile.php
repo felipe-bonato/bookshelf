@@ -27,4 +27,13 @@ class Profile extends \Core\Controller
 			]);	
 		}
 	}
+
+	public function delete_action(){
+		$user = \App\Auth::get_user();
+
+		\App\put("aee");
+		$user->delete();
+
+		\App\redirect('');
+	}
 }
