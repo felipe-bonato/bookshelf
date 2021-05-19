@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+
+{% block styles %}<link rel="stylesheet" href="/css/home/index.css">{% endblock %}
+
+{% block title %}Home{% endblock %}
+
+{% block body %}
+	<main id="s-main-con">
+		<ul>
+		{% for user in results %}
+			<li>
+				<a href="/profile/{{ user.id }}/view">{{ user.fullname }}</a>
+			</li>
+		{% endfor %}
+		</ul>
+	</main>
+{% endblock %}

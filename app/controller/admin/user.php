@@ -16,4 +16,16 @@ class User extends \Core\Controller
 			'deleted_users' => $deleted_users
 		]);
 	}
+
+	public function search_action(): void
+	{
+		\Core\View::render_templeate('admin/user/search.html');
+	}
+
+	public function result_action(): void
+	{
+		\Core\View::render_templeate('admin/user/result.html', [
+			'results' => \App\Model\User::search($_POST['search_string'])
+		]);
+	}
 }

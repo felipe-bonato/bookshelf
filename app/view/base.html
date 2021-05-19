@@ -17,11 +17,13 @@
 	{% block nav %}
 	<nav id="nav-con">
 		<a href="/" class="nav-item">Home</a>
-		<a href="/book/sell" class="nav-item">Sell</a>
+		<a href="/search/index" class="nav-item">Search</a>
 		{% if user %}
-		{% if user.id_user_type == 2 %}
-		<a href="/admin/menu" class="nav-item">Admin</a>
-		{% endif %}
+			{% if user.id_user_type == 2 %}
+				<a href="/admin/menu" class="nav-item">Admin</a>
+			{% else %}
+				<a href="/book/sell" class="nav-item">Sell</a>
+			{% endif %}
 			<a href="/profile/index" class="nav-item">Profile</a>
 			<a href="/logout" class="nav-item">Logout</a>
 		{% else %}
