@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block styles %}<link rel="stylesheet" href="/css/search/index.css">{% endblock %}
+
+{% block title %}Search{% endblock %}
+
+{% block body %}
+	<main class="s-main-con">
+		<h1 class="s-tittle">Search</h1>
+		<form method="POST" action="/search/result" id="register-new-form"  class="search-form">
+			<fieldset class="s-fieldset">
+				<input type="text" name="search_string" required>
+			</fieldset>
+			<fieldset class="s-button">
+				<button type="submit">
+					<img src="/img/icon/search.svg" alt="Search" style="display: block;">
+				</button>
+			</fieldset>
+		</form>
+	</main>
+{% endblock %}

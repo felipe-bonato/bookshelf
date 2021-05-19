@@ -1,0 +1,10 @@
+.search-form {
+	display: flex;
+	flex-direction: row;
+
+	gap: 8px;
+}
+
+.search-form .s-fieldset {
+	width: 100%;
+}
