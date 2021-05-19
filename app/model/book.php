@@ -13,7 +13,7 @@ class Book extends \Core\Model
 	{
 		$conn = static::get_db_conection();
 			
-		if(!$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, book_genre.name AS genre_name FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id WHERE book.deleted_at IS NULL')){
+		if(!$stmt = $conn->prepare('SELECT book.id AS id, id_owner, id_buyer, id_genre, book.name AS name, author, isbn, price, book_genre.name AS genre_name, owner.fullname AS owner_fullname, buyer.fullname AS buyer_fullname FROM book INNER JOIN book_genre ON book.id_genre = book_genre.id INNER JOIN user AS owner ON owner.id = book.id_owner LEFT JOIN user AS buyer ON buyer.id = book.id_buyer WHERE book.deleted_at IS NULL')){
 			throw new \Exception('Could not prepare fetch book name by book id statement');
 		}
 		
@@ -42,10 +42,8 @@ class Book extends \Core\Model
 	public function insert(): bool
 	{
 		$this->id_owner = $_SESSION['user_id'];
-		
-		$this->validate_book_data();
 
-		if(!empty($this->errors)){
+		if(!$this->validate_book_data()){
 			return false;
 		}
 
@@ -80,23 +78,31 @@ class Book extends \Core\Model
 		return true;
 	}
 
-	public function validate_book_data(): void
+	public function validate_book_data(): bool
 	{
-		if(!isset($this->cover_image)){
-			$this->errors[] = 'Invalid image';
+		$no_errors = true;
+
+		if(!isset($_FILES['cover_image']['tmp_name'])){
+			\App\Flash::add_message('Invalid Image', \App\Flash::ERROR);
+			$no_errors = false;
 		}
 
 		if(strlen($this->name) < 1){
-			$this->errors[] = 'Invalid name';
+			\App\Flash::add_message('Invalid Name', \App\Flash::ERROR);
+			$no_errors = false;
 		}
 
 		if(strlen($this->id_genre) > 12){
-			$this->errors[] = 'Invalid name';
+			\App\Flash::add_message('Invalid Genre', \App\Flash::ERROR);
+			$no_errors = false;
 		}
 
 		if(!is_numeric($this->price) || $this->price < .1){
-			$this->errors[] = 'Invalid price';
+			\App\Flash::add_message('Invalid Price', \App\Flash::ERROR);
+			$no_errors = false;
 		}
+
+		return $no_errors;
 	}
 
 	public static function get_book_by_id(int $id)
@@ -154,15 +160,9 @@ class Book extends \Core\Model
 
 	public function delete()
 	{
-		//$this->validate_modify_data(); //TODO: ADD THIS BACK <-------------------------------------------------
-
-		if(!empty($this->errors)){
-			return false;
-		}
-
 		$conn = static::get_db_conection();
 
-		$sql = 'UPDATE book SET deleted_at=:deleted_at WHERE id=:id;';
+		$sql = 'UPDATE book SET deleted_at=:deleted_at WHERE id=:id AND book.deleted_at IS NULL;';
 		
 		if(!$stmt = $conn->prepare($sql)){
 			throw new \Exception('Could not prepare book update statement');
