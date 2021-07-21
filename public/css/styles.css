@@ -1,0 +1,68 @@
+:root {
+	/* COLORS */
+	--primary-dark: #50AADD;
+	--primary-light: #8FD4EF;
+	--background: #EAF5FB;
+
+	--info: #0000ff;
+	--success: #0f0;
+	--warning: #ffff00;
+	--error: #f33a1a;
+
+	--text-dark: #000b11;
+	--text-light: #fefeff;
+
+	--shadow: rgba(0,0,0,.3);
+	--shadow-light: rgba(0,0,0,.15);
+
+	/* STANDARD SIZES */
+	--width-con-small: clamp(200px, 15%, 1000px);
+	--width-con-large: clamp(360px, 85%, 900px);
+	--width-con-mobile: clamp(300px, 95%, 900px);
+
+	--margin-con: 100px;
+
+	--padding-con: 16px;
+
+	/* STANDARD SHADOWS */
+	--shadow-small: 2px 2px 4px 0px var(--shadow-light);
+	--shadow-large: 2px 2px 8px 2px var(--shadow);
+	
+	--container-lr-padding: 15%;
+	--margin-itens: 3rem;
+	
+	--rounding: 15px;
+	
+	--margin: 15px;
+	--pading: 15px;
+	
+	/* ANIMATIONS */
+	--transition-time: 250ms;
+	
+	/* FONTS */
+	--font-main: 'Proza Libre', sans-serif;
+
+	/* DEFAULTS */
+	font-family: 'Proza Libre', Helvetica, sans-serif;
+	background-color: var(--background);
+	color: var(--text-dark);
+}
+
+* {
+	padding: 0;
+	margin: 0;
+	border: 0;
+	
+	box-sizing: border-box;
+}
+
+
+.s-main-con {
+	width: var(--width-con-mobile);
+
+	margin: 32px auto 32px auto;
+	padding: var(--padding-con);
+
+	background-color: var(--primary-light);
+	border-radius: var(--rounding);
+}
