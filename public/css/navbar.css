@@ -1,0 +1,34 @@
+#NavBar_con {
+	position: fixed;
+	bottom: 0;
+	width: 100%;
+
+	display: flex;
+	flex-flow: row;
+	justify-content: space-around;
+
+	padding: 0 clamp(25px, 10%, 1024px);
+	
+	background-color: var(--primary-light);
+	box-shadow: 0 .5rem .75rem -.25rem var(--shadow-light);
+}
+
+.NavBar_item {
+	/*z-index: 100;*/
+	
+	padding: .5rem clamp(0px, .75em, 3em);
+	
+	/*font: bold 1rem var(--font-main);*/
+	font: bold clamp(.75rem, 4vw, 1.125rem) var(--font-main);
+	
+	/*border-radius: 16px;*/
+	/*background: transparent;*/
+
+	/*transition: transform calc(var(--transition-time) * .66) ease-out;*/
+	/*transition: transform calc(var(--transition-time) * 2) cubic-bezier(0.19, 1, 0.22, 1);*/
+}
+
+.NavBar_item a {
+	text-decoration: none;
+	color: var(--text-dark);
+}

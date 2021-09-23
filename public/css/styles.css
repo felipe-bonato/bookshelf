@@ -56,6 +56,9 @@
 	box-sizing: border-box;
 }
 
+.title_con {
+	text-align: center;
+}
 
 .s-main-con {
 	width: var(--width-con-mobile);
