@@ -10,7 +10,11 @@ app.engine('jsx', express_react_views.createEngine());
 
 app.use(express.static('public'));
 
-app.get('/', require('./app/routes').index);
 app.get(['/', '/home'], routes.home); // Random sortment of books to buy
+app.get('/sell', routes.sell); // Page with a camera app so you can sell
+app.get('/book', routes.book); // Page with book details, and a button to buy
+app.get('/search', routes.search); // Results from query
+app.get('/login', routes.login); // Login page
+app.get('/logout', routes.logout); // Results from query
 
 app.listen(8080, () => console.log('[SETUP] Server started'));

@@ -1,26 +1,6 @@
-exports.index = (req, res) => {
-	res.render('home/home', {
-		name: 'John',
-		title: 'Home',
-		color_scheme: 'light',
-		books: [
-			{
-				title: 'Book1',
-				author: 'Felipe',
-				cover_img: 'foto.png',
-			},
-			{
-				title: 'Book2',
-				author: 'Luiza',
-				cover_img: 'foto5.png',
-			},
-			{
-				title: 'Book3',
-				author: 'Joãozinho',
-				cover_img: 'foto3.png',
-			},
-		],
-	});
-	console.log('Index Request Handled');
-};
-  
+exports.home = require('./home').index
+exports.sell = require('./sell').index
+exports.book = require('./book').index
+exports.search = require('./search').index
+exports.login = require('./auth').login
+exports.logout = require('./auth').logout
