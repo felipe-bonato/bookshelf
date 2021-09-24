@@ -20,7 +20,6 @@ exports.index = (req, res) => {
 				coverImg: 'foto3.png',
 			},
 		],
-	});
-	require('./../util/log').logConnection(req)
+	})
 	//console.log(req.client.parser.incoming.originalUrl)
-};
+}

@@ -1,14 +1,11 @@
 exports.login = (req, res) => {
-	res.render('auth/login');
-	require('./../util/log').logConnection(req)
-};
+	res.render('auth/login')
+}
 
 exports.logout = (req, res) => {
-	res.render('auth/logout');
-	require('./../util/log').logConnection(req)
-};
+	res.render('auth/logout')
+}
 
 exports.register = (req, res) => {
-	res.render('auth/register');
-	require('./../util/log').logConnection(req)
-};
+	res.render('auth/register')
+}

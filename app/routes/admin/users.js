@@ -5,5 +5,5 @@ exports.index = async (req, res) => {
 	res.render('admin/users', {
 		'users': users,
 	});
-    require('../../util/log').logConnection(req)
+    require('../../util').logConnection(req)
 };
