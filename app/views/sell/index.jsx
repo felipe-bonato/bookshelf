@@ -4,7 +4,7 @@ var Title = require('../layouts/title')
 
 module.exports = function Sell(props) {
 	return (
-		<Base title="Sell" hasPageTitle={true}>
+		<Base title="Sell" hasPageTitle={true} showNavBar={true}>
 			<form>
 				<fieldset>
 					<label>Image</label>

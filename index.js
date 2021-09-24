@@ -45,7 +45,7 @@ app.get('/sell', routes.sell) // Page with a camera app so you can sell
 app.get('/book', routes.book) // Page with book details, and a button to buy
 app.get('/search', routes.search) // Results from query
 app.get('/login', routes.login) // Login page
-app.get('/logout', routes.logout) // Results from query
+app.get('/profile', routes.profile) // User profile
 app.get('/register', routes.register) // Registration page
 
 app.get('/api/logout', routes.api.logout)

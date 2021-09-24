@@ -4,7 +4,6 @@ exports.login = async (req, res) => {
     const user = req.body
     const correctPassword = await dbUser.getPasswordFromEmail(user.email)
 
-    console.log(`[INFO][api/auth/login]${user.password} == ${correctPassword} ? ${user.password === correctPassword}`)
     if(user.password === correctPassword) {
         req.session['user'] = user.email
     }

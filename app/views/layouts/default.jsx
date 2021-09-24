@@ -18,7 +18,7 @@ module.exports = function Base(props) {
 					{ props.hasPageTitle && <Title main={ props.title } /> }
 					{ props.children }
 				</main>
-				<NavBar />
+				{ props.showNavBar && <NavBar /> }
 			</body>
 		</html>
 	);

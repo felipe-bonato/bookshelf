@@ -21,7 +21,7 @@ module.exports = class Register extends React.Component {
 	
 	render() {
 		return (
-			<Base title="Register" hasPageTitle={true}>
+			<Base title="Register" hasPageTitle={true} showNavBar={true}>
 				<form onSubmit={ this.handleSubmit } action="/api/register" method="POST">
 					<fieldset>
 						<label htmlFor="email">Email</label>
