@@ -5,7 +5,7 @@ module.exports = function Book(props) {
 	<div>
 		<h1>{ props.title }</h1>
 		<h3>{ props.author }</h3>
-		<span>{ props.cover_img }</span>
+		<span>{ props.coverImg }</span>
 	</div>
   );
 };

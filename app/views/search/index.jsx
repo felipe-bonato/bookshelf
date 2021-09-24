@@ -4,8 +4,7 @@ var Title = require('../layouts/title')
 
 module.exports = function Search(props) {
 	return (
-		<Base title={ props.tab_title } color_scheme={ props.color_scheme }>
-			<Title main="Search" />
+		<Base title="Search" hasPageTitle={true}>
 			<div>Hey, i'm search</div>
 		</Base>
 	)

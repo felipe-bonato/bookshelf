@@ -7,17 +7,17 @@ exports.index = (req, res) => {
 			{
 				title: 'Book1',
 				author: 'Felipe',
-				cover_img: 'foto.png',
+				coverImg: 'foto.png',
 			},
 			{
 				title: 'Book2',
 				author: 'Luiza',
-				cover_img: 'foto5.png',
+				coverImg: 'foto5.png',
 			},
 			{
 				title: 'Book3',
 				author: 'Joãozinho',
-				cover_img: 'foto3.png',
+				coverImg: 'foto3.png',
 			},
 		],
 	});

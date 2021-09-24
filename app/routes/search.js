@@ -1,7 +1,4 @@
 exports.index = (req, res) => {
-	res.render('search/index', {
-		tab_title: '<book-name>',
-		color_scheme: 'light',
-	});
+	res.render('search/index');
     require('./../util/log').logConnection(req)
 };

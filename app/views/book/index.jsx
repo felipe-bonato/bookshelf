@@ -4,8 +4,7 @@ var Title = require('../layouts/title')
 
 module.exports = function Book(props) {
 	return (
-		<Base title={ props.tab_title } color_scheme={ props.color_scheme }>
-			<Title main="Book" />
+		<Base title={ props.name }>
 			<div>Hey, i'm book</div>
 		</Base>
 	)
