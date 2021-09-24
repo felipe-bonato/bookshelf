@@ -9,7 +9,7 @@ app.set('view engine', 'jsx')
 app.engine('jsx', express_react_views.createEngine())
 
 app.use(express.static('public'))
-app.use(express.urlencoded({ extended: true }))
+app.use(express.urlencoded({ extended: true })) // To allow post method
 
 app.get(['/', '/home'], routes.home) // Random sortment of books to buy
 app.get('/sell', routes.sell) // Page with a camera app so you can sell

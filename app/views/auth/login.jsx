@@ -19,6 +19,7 @@ module.exports = function Login(props) {
                     <button type="submit">Log In</button>
                 </fieldset>
             </form>
+            <div>Don't have an account? <a href="/register">Try registring</a></div>
         </Base>
     )
 }
