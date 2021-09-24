@@ -2,7 +2,7 @@
 
 const db = require('./db')
 
-exports.User = class User {
+module.exports = new (class {
     constructor() {
         this.db = db.fetchDbConn('users')
     }
@@ -29,4 +29,7 @@ exports.User = class User {
         await this._init()
         return this.db.find({}).toArray()
     }
-}
+})
+
+
+//exports.user = new User()

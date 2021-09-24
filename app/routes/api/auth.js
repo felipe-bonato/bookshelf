@@ -7,7 +7,7 @@ exports.register = (req, res) => {
         res.redirect('/register') /** Error envalid password **/
         return
     }
-
+    
     dbUser.insert(user.email, user.password) /** Error could not inser user **/
 
     res.redirect('/login')
