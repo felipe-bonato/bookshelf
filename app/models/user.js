@@ -14,7 +14,7 @@ module.exports = new (class {
     async getPasswordFromEmail(email) {
         await this._init()
         const entry = await this.db.findOne({ 'email': email })
-        return entry.password
+        return entry ? entry['password'] : null
     }
 
     async insert(email, password) {
@@ -28,6 +28,11 @@ module.exports = new (class {
     async getAll() {
         await this._init()
         return this.db.find({}).toArray()
+    }
+
+    async deleteAll() {
+        await this._init()
+        this.db.deleteMany({})
     }
 })
 

@@ -24,15 +24,15 @@ module.exports = class Register extends React.Component {
 			<Base title="Register" hasPageTitle={true}>
 				<form onSubmit={ this.handleSubmit } action="/api/register" method="POST">
 					<fieldset>
-						<label for="email">Email</label>
+						<label htmlFor="email">Email</label>
 						<input id="email" type="email" name="email"></input>
 					</fieldset>
 					<fieldset>
-						<label for="password">Password</label>
+						<label htmlFor="password">Password</label>
 						<input id="password" type="password" name="password"></input>
 					</fieldset>
 					<fieldset>
-						<label for="confirmPassword">Confirm Password</label>
+						<label htmlFor="confirmPassword">Confirm Password</label>
 						<input id="confirmPassword" type="password" name="confirmPassword"></input>
 					</fieldset>
 					<fieldset>
