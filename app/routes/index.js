@@ -7,3 +7,4 @@ exports.logout = require('./auth').logout
 exports.register = require('./auth').register
 
 exports.api = require('./api')
+exports.admin = require('./admin')

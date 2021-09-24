@@ -21,4 +21,6 @@ app.get('/register', routes.register) // Registration page
 
 app.post('/api/register', routes.api.register)
 
+app.get('/admin/users', routes.admin.users)
+
 app.listen(8080, () => console.log('[SETUP] Server started'))
