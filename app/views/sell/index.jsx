@@ -5,18 +5,22 @@ var Title = require('../layouts/title')
 module.exports = function Sell(props) {
 	return (
 		<Base title="Sell" hasPageTitle={true} showNavBar={true}>
-			<form>
+			<form action="/api/sell" method="POST" className="bsForm">
 				<fieldset>
-					<label>Image</label>
-					<input type="file" name="image" />
+					<label htmlFor="image">Image</label>
+					<input id="image" type="file" name="image" />
 				</fieldset>
 				<fieldset>
-					<label>Name</label>
-					<input type="text" name="name" />
+					<label htmlFor="name">Name</label>
+					<input id="name" type="text" name="name" />
 				</fieldset>
 				<fieldset>
-					<label>Author</label>
-					<input type="text" name="name" />
+					<label htmlFor="author">Author</label>
+					<input id="author" type="text" name="author" />
+				</fieldset>
+				<fieldset>
+					<label htmlFor="price">Price</label>
+					<input id="price" type="number" name="price" />
 				</fieldset>
 				<fieldset>
 					<button type="submit" value="Submit">Sell</button>

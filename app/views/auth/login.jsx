@@ -3,8 +3,8 @@ var Base  = require('../layouts/default')
 
 module.exports = function Login(props) {
 	return (
-		<Base title="Login" hasPageTitle={true}>
-			<form action="/api/login" method="POST">
+		<Base title="Login" hasPageTitle={true} showNavBar={false}>
+			<form action="/api/login" method="POST" className="bsForm">
 				<fieldset>
 					<label htmlFor="email">Email</label>
 					<input id="email" type="email" name="email"></input>

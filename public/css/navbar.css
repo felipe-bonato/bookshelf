@@ -10,13 +10,13 @@
 	padding: 0 clamp(25px, 10%, 1024px);
 	
 	background-color: var(--primary-light);
-	box-shadow: 0 .5rem .75rem -.25rem var(--shadow-light);
+	box-shadow: 0 -.5rem .75rem -.25rem var(--shadow-light);
 }
 
 .NavBar_item {
 	/*z-index: 100;*/
 	
-	padding: .5rem clamp(0px, .75em, 3em);
+	/*padding: .5rem clamp(0px, .75em, 3em);*/
 	
 	/*font: bold 1rem var(--font-main);*/
 	font: bold clamp(.75rem, 4vw, 1.125rem) var(--font-main);

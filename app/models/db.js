@@ -9,6 +9,8 @@ exports.fetchDbConn = async (collection, configFilePath='config/dbConfig.json') 
 	return conn.db(config.name).collection(collection)
 }
 
+exports.ObjectId = mongodb.ObjectId
+
 async function getDbConfig(path){
 	const configFile = await fs.readFile(path)
 	return JSON.parse(configFile)

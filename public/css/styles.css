@@ -1,3 +1,5 @@
+@import url('https://fonts.googleapis.com/css2?family=Proza+Libre&display=swap');
+
 :root {
 	/* COLORS */
 	--primary-dark: #50AADD;
@@ -31,7 +33,7 @@
 	--container-lr-padding: 15%;
 	--margin-itens: 3rem;
 	
-	--rounding: 15px;
+	--rounding: .5rem;
 	
 	--margin: 15px;
 	--pading: 15px;
@@ -58,6 +60,7 @@
 
 .title_con {
 	text-align: center;
+	margin-bottom: 1rem;
 }
 
 .s-main-con {
@@ -69,3 +72,39 @@
 	background-color: var(--primary-light);
 	border-radius: var(--rounding);
 }
+
+.bsForm {
+	display: flex;
+	flex-direction: column;
+
+	gap: 2rem
+}
+
+.bsForm fieldset {
+	display: flex;
+	flex-direction: column;
+}
+
+.bsForm fieldset label {
+	font-size: 1.25rem;
+}
+
+.bsForm fieldset input {
+	width: 100%;
+
+	padding: .5rem;
+	border-radius: var(--rounding);
+
+	font-size: 1.75rem;
+}
+
+.bsForm fieldset button[type="submit"] {
+	height: 3rem;
+	border-radius: var(--rounding);
+
+	font-size: 1.25rem;
+	font-weight: 500;
+
+	background-color: var(--primary-dark);
+}
+

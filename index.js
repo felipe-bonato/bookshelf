@@ -42,16 +42,17 @@ app.use((req, res, next) => {
 
 app.get(['/', '/home'], routes.home) // Random sortment of books to buy
 app.get('/sell', routes.sell) // Page with a camera app so you can sell
-app.get('/book', routes.book) // Page with book details, and a button to buy
 app.get('/search', routes.search) // Results from query
 app.get('/login', routes.login) // Login page
 app.get('/profile', routes.profile) // User profile
 app.get('/register', routes.register) // Registration page
 
+app.get('/book/:bookId', routes.book) // Page with book details, and a button to buy
+
 app.get('/api/logout', routes.api.logout)
 app.post('/api/register', routes.api.register)
-//app.post('/api/login', routes.api.login)
 app.post('/api/login', routes.api.login)
+app.post('/api/sell', routes.api.sell)
 
 app.get('/admin/users', routes.admin.users)
 
